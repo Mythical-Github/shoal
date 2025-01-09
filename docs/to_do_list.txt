@@ -1,0 +1,15 @@
+To Do:
+    contributions section
+    bug reporting section
+    suggestion section
+    discord section
+    fix all patch comments
+    use staging logic for both clients
+    delay excessively prints out when it's set to 0
+
+
+Later:
+
+
+Maybes:
+

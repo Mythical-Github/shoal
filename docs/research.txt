@@ -1,0 +1,16 @@
+
+iw4-sp, iw4x, iw5-mod, iw6-mod, s1-mod Must be the first argument if used
+--path, -p
+
+    Set the game installation path
+        Do not include a trailing backslash in the path
+--path, -p
+
+    Set the game installation path
+        Do not include a trailing backslash in the path
+
+--prerelease
+
+    Update to prerelease version of clients (currently only available for IW4x) and launcher
+
+alterware-launcher.exe iw4x --bonus -u --path "C:\Games\IW4x" --pass "-console"
