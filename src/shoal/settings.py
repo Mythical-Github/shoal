@@ -7,7 +7,6 @@ import tomlkit
 from shoal import data_structures
 from shoal.general.file_io import download_file
 from shoal.general.file_io import remove_line_from_config
-from shoal.game_clients import get_plutonium_modern_warfare_iii_config_path, get_latest_alterware_launcher_url, get_game_mode_options
 
 
 SCRIPT_DIR = Path(sys.executable).parent if getattr(sys, "frozen", False) else Path(__file__).resolve().parent
@@ -186,6 +185,7 @@ def get_currently_selected_game_mode() -> data_structures.GameModes:
             break
 
     if not was_in:
+        from shoal.game_clients import get_game_mode_options
         current_game_mode = get_game_mode_options()[0][0]
         game_specific_section['last_selected_game_mode'] = current_game_mode
         save_settings()
@@ -389,6 +389,7 @@ def remove_game_specific_arg(game_arg: str):
     game_args = get_game_specific_args()
     game_args.remove(game_arg)
     set_game_specific_args(game_args)
+    from shoal.game_clients import get_plutonium_modern_warfare_iii_config_path
     remove_line_from_config(get_plutonium_modern_warfare_iii_config_path(), game_arg)
 
 
@@ -397,6 +398,7 @@ def get_title_for_app() -> str:
 
 
 def get_alterware_launcher_path() -> str:
+    from shoal.game_clients import get_latest_alterware_launcher_url
     alterware_launcher_path = os.path.normpath(f'{SCRIPT_DIR}/assets/alterware_launcher/alterware-launcher.exe')
     os.makedirs(os.path.dirname(alterware_launcher_path), exist_ok=True)
     if not os.path.isfile(alterware_launcher_path):
