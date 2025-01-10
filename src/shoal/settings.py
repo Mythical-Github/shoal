@@ -131,7 +131,23 @@ def get_current_username() -> str:
     return username
 
 
+def alterware_username_check(username: str):
+    from shoal.game_clients import get_current_config_path_for_alterware_games, get_current_client
+    if get_current_client() == data_structures.GameClients.ALTERWARE:
+        config_path = get_current_config_path_for_alterware_games()
+        if os.path.isfile(config_path):
+            from shoal.general import file_io
+            all_lines = file_io.get_all_lines_in_config(config_path)
+            new_all_lines = []
+            for line in all_lines:
+                if not line.startswith('seta name'):
+                    new_all_lines.append(line)
+            new_all_lines.append(f'seta name "{username}"')
+            file_io.set_all_lines_in_config(config_path, new_all_lines)
+
+
 def set_username(username: str):
+    alterware_username_check(username)
     if 'global' not in SETTINGS:
         SETTINGS['global'] = {}
 
