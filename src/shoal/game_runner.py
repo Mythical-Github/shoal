@@ -88,10 +88,12 @@ def run_alterware_game():
     combined_args = global_args + game_specific_args
     for arg in combined_args:
         args_string = f'{args_string} {arg}'
-    args.append(f'--pass "{args_string}"')
+    if not args_string == '':
+        args.append(f'--pass "{args_string}"')
     command = f'"{main_exe}"'
     for arg in args:
         command = f'{command} {arg}'
+    print_to_log_window(command)
     subprocess.Popen(
         command,
         cwd=os.path.dirname(get_alterware_launcher_path()),
