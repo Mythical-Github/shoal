@@ -87,7 +87,7 @@ games_info = [
         game_modes=[
             GameMode(
                 game_mode=GameModes.SINGLE_PLAYER,
-                arg = 'iw5-sp',
+                arg = 'iw5-mod',
                 client=GameClients.ALTERWARE
             ),
             GameMode(
