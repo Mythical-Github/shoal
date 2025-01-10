@@ -1,9 +1,8 @@
+
+
 To Do:
-    contributions section
-    bug reporting section
-    suggestion section
-    discord section
-    client args global non global section
+    global launch args
+    game specific launch args
     actual directory selection screen
     delay excessively prints out when it's set to 0
 
@@ -12,5 +11,4 @@ Later:
 
 
 Maybes:
-
 
