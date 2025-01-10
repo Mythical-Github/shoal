@@ -3,7 +3,7 @@ from textual.widgets import RichLog, Static
 
 class LauncherLog(Static):
     def compose(self):
-        self.rich_log = RichLog(wrap=True)
+        self.rich_log = RichLog(wrap=True, min_width=0)
         yield self.rich_log
 
     def on_mount(self):
