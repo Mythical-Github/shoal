@@ -72,7 +72,7 @@ class UsernameBar(Static):
                 error_message = 'The currently selected game is invalid.'
                 RuntimeWarning(error_message)
 
-        self.usernames_combo_box: Select[int] = Select(options=self.options, allow_blank=True, value=main_value)
+        self.usernames_combo_box: Select[int] = Select(options=self.options, allow_blank=False, value=main_value)
         self.add_button = AddUserButton()
         self.remove_button = RemoveUserButton()
         with self.horizontal_box:

@@ -76,22 +76,27 @@ def run_alterware_game():
     args = [
         get_game_launch_arg(),
         '--bonus',
+        '--skip-redist',
         '--path',
         f'"{get_game_directory()}"'
     ]
     if get_use_staging():
         args.append('--prerelease')
-    args_string = ''
+    if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
+        args_string = '-singleplayer'
+    else:
+        args_string = '-multiplayer'
     global_args = get_global_args() or []
     game_specific_args = get_game_specific_args() or []
     
     combined_args = global_args + game_specific_args
     for arg in combined_args:
         args_string = f'{args_string} {arg}'
-    args.append(f'--pass "{args_string}"')
+    args.append(f'--pass "{args_string.strip()}"')
     command = f'"{main_exe}"'
     for arg in args:
         command = f'{command} {arg}'
+    print_to_log_window(command)
     subprocess.Popen(
         command,
         cwd=os.path.dirname(get_alterware_launcher_path()),

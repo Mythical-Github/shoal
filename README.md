@@ -5,6 +5,16 @@ This is a text-based UI launcher for the following Call of Duty mod clients:
 - [AlterWare](https://alterware.dev/)
 - [Plutonium](https://plutonium.pw/)
 
+It supports the following games:
+
+- [Call of Duty: World at War](https://store.steampowered.com/app/10090/Call_of_Duty_World_at_War/)
+- [Call of Duty: Modern Warfare 2](https://store.steampowered.com/app/10180/Call_of_Duty_Modern_Warfare_2/)
+- [Call of Duty: Modern Warfare 3](https://store.steampowered.com/app/115300/Call_of_Duty_Modern_Warfare_3_2011/)
+- [Call of Duty: Black Ops](https://store.steampowered.com/app/42700/Call_of_Duty_Black_Ops/)
+- [Call of Duty: Black Ops II](https://store.steampowered.com/app/202970/Call_of_Duty_Black_Ops_II/)
+- [Call of Duty: Ghosts](https://store.steampowered.com/app/209160/Call_of_Duty_Ghosts/)
+- [Call of Duty: Advanced Warfare](https://store.steampowered.com/app/209650/Call_of_Duty_Advanced_Warfare/)
+
 
 ### Download
 - Click [here](https://github.com/Mythical-Github/shoal/releases/latest/download/shoal.zip) to download the latest prebuilt exe release.

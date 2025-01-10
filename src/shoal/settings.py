@@ -112,12 +112,16 @@ def set_usernames(usernames: list[str]):
     save_settings()
 
 
+def get_default_username() -> str:
+    return 'Unknown Soldier'
+
+
 def get_current_username() -> str:
     global_settings = SETTINGS.get('global', {})
     username = global_settings.get('last_selected_username')
 
     if not username:
-        username = 'default'
+        username = get_default_username()
         set_username(username)
 
     if username not in get_usernames():
