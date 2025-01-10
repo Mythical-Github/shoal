@@ -43,14 +43,13 @@ class RemoveUserButton(Static):
         self.add_button.styles.content_align = ("center", "middle")
 
     def on_button_pressed(self) -> None:
-        from shoal.main_app import app
         from shoal.settings import remove_username
-
-        username = app.user_bar.options[app.user_bar.usernames_combo_box.value][0]
+        username_bar = self.parent.parent
+        username = username_bar.options[username_bar.usernames_combo_box.value][0]
 
         print_to_log_window(f'Attempting to remove the following username: "{username}"')
         remove_username(username)
-        app.user_bar.refresh(recompose=True)
+        username_bar.refresh(recompose=True)
 
 
 class UsernameBar(Static):

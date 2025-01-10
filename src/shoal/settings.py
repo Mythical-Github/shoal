@@ -92,7 +92,7 @@ def get_usernames() -> list[str]:
         usernames = []
 
     if not usernames:
-        usernames = ['default']
+        usernames = [get_default_username()]
         set_usernames(usernames)
 
     return usernames
