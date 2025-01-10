@@ -10,6 +10,7 @@ from shoal.global_game_args.global_args_bar import GlobalArgsSection
 from shoal.game_directory_bar.game_directory_bar import GameDirectoryBar
 from shoal.game_mode_selector.game_mode_selector import GameModeSelector
 from shoal.auto_run_game_bar.auto_run_game_bar import GameAutoExecuteBar
+from shoal.usernames_bar.usernames_bar import UsernameBar
 from shoal.game_specific_game_args.game_specific_args_bar import GameSpecificArgsSection
 from shoal.customization import set_terminal_size, set_window_title
 from shoal.settings import get_current_preferred_theme, get_title_for_app
@@ -24,6 +25,7 @@ class Shoal(App):
         self.game_selector = GameSelector()
         self.game_mode_selector = GameModeSelector()
         self.game_dir_select = GameDirectoryBar()
+        self.username_bar = UsernameBar()
         self.global_args_section = GlobalArgsSection()
         self.game_args_section = GameSpecificArgsSection()
         self.game_buttons_bar = GameButtonsBar()
@@ -34,6 +36,7 @@ class Shoal(App):
             yield self.game_selector
             yield self.game_mode_selector
             yield self.game_dir_select
+            yield self.username_bar
             yield self.global_args_section
             yield self.game_args_section
             yield self.auto_run_game_bar
