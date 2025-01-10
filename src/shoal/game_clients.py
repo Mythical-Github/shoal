@@ -91,3 +91,35 @@ def get_current_client_forum_link() -> str:
 
 def get_latest_alterware_launcher_url() -> str:
     return 'https://github.com/mxve/alterware-launcher/releases/latest/download/alterware-launcher.exe'
+
+
+def get_mw3_mp_config() -> str:
+    return
+
+
+def get_sp_aw_config() -> str:
+    return
+
+
+def get_mp_aw_config() -> str:
+    return
+
+
+def get_sp_ghosts_config() -> str:
+    return
+
+
+def get_mp_ghosts_config() -> str:
+    return
+
+
+def get_sp_mw2_config() -> str:
+    return
+
+
+def get_mp_mw2_config() -> str:
+    return
+
+
+def get_current_config() -> str:
+    return

@@ -5,6 +5,8 @@ To Do:
     discord section
     delay excessively prints out when it's set to 0
     client args global non global section
+    username logic for alterware titles
+    actual directory selection screen
 
 
 Later:
