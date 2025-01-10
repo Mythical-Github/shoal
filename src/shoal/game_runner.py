@@ -89,7 +89,7 @@ def run_alterware_game():
     for arg in combined_args:
         args_string = f'{args_string} {arg}'
     if not args_string == '':
-        args.append(f'--pass "{args_string}"')
+        args.append(f'--pass "{args_string.strip()}"')
     command = f'"{main_exe}"'
     for arg in args:
         command = f'{command} {arg}'
