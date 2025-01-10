@@ -103,6 +103,9 @@ def run_alterware_game():
 
 
 def run_game():
+    if get_game_directory() == '':
+        print_to_log_window(f'You must provide the game directory, before running the game')
+        return
     if get_current_client() == data_structures.GameClients.ALTERWARE:
         run_alterware_game()
     elif get_game_launch_arg() == 'iw5mp':
