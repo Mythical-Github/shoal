@@ -8,7 +8,11 @@ To Do:
 
 
 Later:
+    Automatically set font size to 8
+    linux support, modern debian and ubuntu atleast
 
 
 Maybes:
+    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher    
+
 
