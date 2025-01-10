@@ -69,7 +69,7 @@ class GameSpecificArgsSection(Static):
 
         self.combo_box: Select[int] = Select(self.options, allow_blank=allow_game_args_blank(), prompt='None')
 
-        self.game_args_label = BaseLabel(label_text="Game Args:", label_height="auto")
+        self.game_args_label = BaseLabel(label_text="Game Specific Args:", label_height="auto")
 
         self.add_button = AddGameArgButton()
 

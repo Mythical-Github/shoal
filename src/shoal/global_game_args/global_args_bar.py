@@ -85,7 +85,7 @@ class GlobalArgsSection(Static):
         self.remove_button = RemoveGlobalArgButton()
 
         with BaseHorizontalBox():
-            yield BaseLabel(label_text="Global Args:", label_height="auto")
+            yield BaseLabel(label_text="Global Game Args:", label_height="auto")
             yield self.combo_box
             yield self.remove_button
             yield self.add_button

@@ -4,10 +4,6 @@ iw4-sp, iw4x, iw5-mod, iw6-mod, s1-mod Must be the first argument if used
 
     Set the game installation path
         Do not include a trailing backslash in the path
---path, -p
-
-    Set the game installation path
-        Do not include a trailing backslash in the path
 
 --prerelease
 

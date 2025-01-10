@@ -44,16 +44,9 @@ class GameSelector(Static):
 
     @on(Select.Changed)
     def select_changed(self, event: Select.Changed) -> None:
-        set_current_selected_game(data_structures.get_enum_from_val(data_structures.Games, self.options[event.value][0]))
         from shoal.main_app import app
-        # below comparison is borked somehow, fix later
-        # patch later
-        # if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III.value or get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
-        #     main_value = 0
-        # else:
-        #     main_value = 1
 
-        app.game_mode_selector.my_select.value = 0 # main_value
+        set_current_selected_game(data_structures.get_enum_from_val(data_structures.Games, self.options[event.value][0]))
         app.game_mode_selector.refresh(recompose=True)
         app.game_dir_select.refresh(recompose=True)
         app.game_args_section.refresh(recompose=True)
