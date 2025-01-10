@@ -16,7 +16,6 @@ class Games(Enum):
 class GameModes(Enum):
     SINGLE_PLAYER = 'Single Player'
     MULTIPLAYER = 'Multiplayer'
-    ALL = 'All'
 
 
 class GameClients(Enum):
@@ -131,7 +130,12 @@ games_info = [
         game=Games.CALL_OF_DUTY_GHOSTS,
         game_modes=[
             GameMode(
-                game_mode=GameModes.ALL,
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = 'iw6-mod',
+                client=GameClients.ALTERWARE
+            ),
+            GameMode(
+                game_mode=GameModes.MULTIPLAYER,
                 arg = 'iw6-mod',
                 client=GameClients.ALTERWARE
             )
@@ -141,7 +145,12 @@ games_info = [
         game=Games.CALL_OF_DUTY_ADVANCED_WARFARE,
         game_modes=[
             GameMode(
-                game_mode=GameModes.ALL,
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = 's1-mod',
+                client=GameClients.ALTERWARE
+            ),
+            GameMode(
+                game_mode=GameModes.MULTIPLAYER,
                 arg = 's1-mod',
                 client=GameClients.ALTERWARE
             )
