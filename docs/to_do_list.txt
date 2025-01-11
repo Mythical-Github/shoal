@@ -14,5 +14,4 @@ Later:
 
 Maybes:
     non plutonium lan mode, needs a way to gen the token that gets passed to the launcher    
-
-
+    dir scan option to find and populate game directories
