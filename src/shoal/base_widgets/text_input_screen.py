@@ -38,16 +38,16 @@ def get_screen_text_input():
     return main_text_input
 
 
-def post_cancel_button_pressed():
-    from shoal.main_app import app
-    get_screen_text_input().value = ''
-    app.pop_screen()
-
-
 global_widget_to_refresh = None
 def get_widget_to_refresh():
     global global_widget_to_refresh
     return global_widget_to_refresh
+
+
+def post_cancel_button_pressed():
+    from shoal.main_app import app
+    get_screen_text_input().value = ''
+    app.pop_screen()
 
 
 def post_confirm_button_pressed():

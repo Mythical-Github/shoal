@@ -16,8 +16,6 @@ from shoal.customization import set_terminal_size, set_window_title, enable_vt10
 from shoal.settings import get_current_preferred_theme, get_title_for_app
 
 
-has_initially_set_theme = False
-
 class Shoal(App):
     TITLE = get_title_for_app()
     def compose(self) -> ComposeResult:
