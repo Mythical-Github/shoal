@@ -70,7 +70,7 @@ class CurrentDirectoryBar(Static):
         self.vertical.styles.height = 'auto'
         self.styles.height = 'auto'
         self.styles.padding = (0)
-        self.styles.margin = (0, 1, 0, 1)
+        # self.styles.margin = (0, 1, 0, 1)
         self.text_area.styles.height = 'auto'
         self.text_area.styles.border = ("solid", "grey")
         self.text_area.border_title = "Current Selection"
@@ -172,7 +172,7 @@ class CancelConfirmHorizontalBar(Static):
 
     def on_mount(self):
         self.horizontal_box.styles.height = 'auto'
-        self.styles.margin = (0, 1, 0, 1)
+        # self.styles.margin = (0, 1, 0, 1)
 
 
 class Picker(Static):
@@ -220,8 +220,8 @@ class Picker(Static):
         self.vertical_box.styles.border = ('solid', 'grey')
         for dir_tree_widget in self.dir_tree_widgets_to_drive_paths.keys():
             dir_tree_widget.styles.border = ('solid', 'grey')
-            dir_tree_widget.styles.margin = (0, 1, 0, 1)
-            dir_tree_widget.styles.padding = (0, 1, 0, 1)
+            # dir_tree_widget.styles.margin = (0, 1, 0, 1)
+            # dir_tree_widget.styles.padding = (0, 1, 0, 1)
             dir_tree_widget.styles.height = 'auto'
             dir_tree_widget.border_title = f'{self.dir_tree_widgets_to_drive_paths[dir_tree_widget]}'
 
