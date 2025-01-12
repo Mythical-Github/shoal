@@ -23,6 +23,12 @@ class GameClients(Enum):
     PLUTONIUM = 'Plutonium'
 
 
+class SelectionFilter(Enum):
+    All = 'All'
+    DIRECTORY = 'Directory'
+    FILE = 'File'
+
+
 @dataclass
 class GameMode:
     game_mode: str

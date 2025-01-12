@@ -12,11 +12,9 @@ from shoal.game_mode_selector.game_mode_selector import GameModeSelector
 from shoal.auto_run_game_bar.auto_run_game_bar import GameAutoExecuteBar
 from shoal.usernames_bar.usernames_bar import UsernameBar
 from shoal.game_specific_game_args.game_specific_args_bar import GameSpecificArgsSection
-from shoal.customization import set_terminal_size, set_window_title
+from shoal.customization import set_terminal_size, set_window_title, enable_vt100
 from shoal.settings import get_current_preferred_theme, get_title_for_app
 
-
-has_initially_set_theme = False
 
 class Shoal(App):
     TITLE = get_title_for_app()
@@ -54,7 +52,7 @@ class Shoal(App):
 
 def configure_app():
     set_window_title(app.TITLE)
-
+    enable_vt100()
     # 52x60 columns/rows in terminal
     set_terminal_size(app, 420, 680)
 

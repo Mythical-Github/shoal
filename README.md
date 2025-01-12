@@ -31,7 +31,7 @@ It supports the following games:
 - Theme customization
 - Global game argument list
 - Game-specific argument lists
-- Username selection (only applicable for Plutonium games)
+- Username selection
 - Utility Buttons
 - Automatic game running, with configureable delay
 

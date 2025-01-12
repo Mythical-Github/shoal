@@ -1,7 +1,7 @@
 import os
 
 from shoal import data_structures
-from shoal.settings import get_current_selected_game, get_use_staging, get_currently_selected_game_mode
+from shoal.settings import get_current_selected_game, get_use_staging, get_currently_selected_game_mode, get_game_directory
 
 
 def get_plutonium_appdata_dir() -> str:
@@ -91,3 +91,13 @@ def get_current_client_forum_link() -> str:
 
 def get_latest_alterware_launcher_url() -> str:
     return 'https://github.com/mxve/alterware-launcher/releases/latest/download/alterware-launcher.exe'
+
+
+def get_current_config_path_for_alterware_games() -> str:
+    current_game_mode = get_currently_selected_game_mode()
+    if current_game_mode == data_structures.GameModes.SINGLE_PLAYER:
+        config_path = os.path.normpath(f'{get_game_directory()}/players2/config.cfg')
+    else:
+        config_path = os.path.normpath(f'{get_game_directory()}/players2/config_mp.cfg')
+    return config_path
+    

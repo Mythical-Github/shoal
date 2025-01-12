@@ -1,15 +1,16 @@
+
+
 To Do:
-    contributions section
-    bug reporting section
-    suggestion section
-    discord section
+    global launch args
+    game specific launch args
     delay excessively prints out when it's set to 0
-    client args global non global section
 
 
 Later:
+    Automatically set font size to 8
+    linux support, modern debian and ubuntu atleast
 
 
 Maybes:
-
-
+    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher    
+    dir scan option to find and populate game directories

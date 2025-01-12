@@ -22,21 +22,17 @@ from shoal.settings import (
 )
 
 def get_game_launch_arg() -> str:
-    # Retrieve the currently selected game and mode
     current_game_mode = get_currently_selected_game_mode()
     current_selected_game = get_current_selected_game()
 
-    # Find the game entry matching the current selected game
     game_info_entry = next((game for game in data_structures.games_info if game.game == current_selected_game), None)
     if not game_info_entry:
         raise ValueError(f"No game entry found for: {current_selected_game.value}")
 
-    # Find the game mode entry matching the current selected game mode
     game_mode_entry = next((mode for mode in game_info_entry.game_modes if mode.game_mode == current_game_mode), None)
     if not game_mode_entry:
         raise ValueError(f"No game mode entry found for: {current_game_mode.value}")
 
-    # Return the argument for launching the game
     return game_mode_entry.arg
 
 
@@ -107,6 +103,9 @@ def run_alterware_game():
 
 
 def run_game():
+    if get_game_directory() == '':
+        print_to_log_window(f'You must provide the game directory, before running the game')
+        return
     if get_current_client() == data_structures.GameClients.ALTERWARE:
         run_alterware_game()
     elif get_game_launch_arg() == 'iw5mp':
