@@ -18,9 +18,9 @@ from shoal.settings import (
 
 
 def generate_spinbox_numbers():
-    current = 0
+    current = 0.1
     max_num = 999
-    while current <= (max_num + 1):
+    while current <= (max_num):
         yield round(current, 1)
         current += 0.1
 

@@ -50,6 +50,8 @@ def action_on_condition():
         has_auto_run_game = True
 
 
+last_print_message = ''
+
 def periodic_check():
     global time_passed, last_run_time
     while not stop_thread_event.is_set():
@@ -59,8 +61,11 @@ def periodic_check():
         if spin_box != None:
             if float(spin_box.value) != get_auto_run_game_delay():
                 from shoal.logger import print_to_log_window
-                spin_box_message = f'The Auto Run Game Delay has been set to "{spin_box.value}" Seconds'
-                print_to_log_window(spin_box_message)
+                new_print_message = f'The Auto Run Game Delay has been set to "{spin_box.value}" Seconds'
+                global last_print_message
+                if not last_print_message == new_print_message:
+                    print_to_log_window(new_print_message)
+                    last_print_message = new_print_message
                 set_auto_run_game_delay(spin_box.value)
 
         delay = get_auto_run_game_delay()
