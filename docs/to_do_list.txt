@@ -3,7 +3,6 @@
 To Do:
     global launch args
     game specific launch args
-    delay excessively prints out when it's set to 0
 
 
 Later:
