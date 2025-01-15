@@ -220,8 +220,6 @@ class Picker(Static):
         self.vertical_box.styles.border = ('solid', 'grey')
         for dir_tree_widget in self.dir_tree_widgets_to_drive_paths.keys():
             dir_tree_widget.styles.border = ('solid', 'grey')
-            # dir_tree_widget.styles.margin = (0, 1, 0, 1)
-            # dir_tree_widget.styles.padding = (0, 1, 0, 1)
             dir_tree_widget.styles.height = 'auto'
             drive_letter = self.dir_tree_widgets_to_drive_paths[dir_tree_widget][:-1]
             drive_name = get_drive_name(drive_letter)
