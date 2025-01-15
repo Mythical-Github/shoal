@@ -51,7 +51,7 @@ class Shoal(App):
 
 
 def configure_app():
-    set_window_title(app.TITLE)
+    set_window_title(get_title_for_app())
     enable_vt100()
     # 52x60 columns/rows in terminal
     set_terminal_size(app, 420, 680)
