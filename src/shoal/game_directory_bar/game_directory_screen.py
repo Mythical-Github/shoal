@@ -8,7 +8,7 @@ from textual.containers import VerticalScroll, Vertical
 from textual.widgets import Header, Static, TextArea, DirectoryTree
 
 from shoal.data_structures import SelectionFilter
-from shoal.general.file_io import get_all_drive_letter_paths
+from shoal.general.file_io import get_all_drive_letter_paths, get_drive_name
 from shoal.base_widgets.base_widgets import BaseButton, BaseHorizontalBox
 
 
@@ -223,7 +223,9 @@ class Picker(Static):
             # dir_tree_widget.styles.margin = (0, 1, 0, 1)
             # dir_tree_widget.styles.padding = (0, 1, 0, 1)
             dir_tree_widget.styles.height = 'auto'
-            dir_tree_widget.border_title = f'{self.dir_tree_widgets_to_drive_paths[dir_tree_widget]}'
+            drive_letter = self.dir_tree_widgets_to_drive_paths[dir_tree_widget][:-1]
+            drive_name = get_drive_name(drive_letter)
+            dir_tree_widget.border_title = f'{drive_name} ({drive_letter})'
 
     @on(DirectoryTree.DirectorySelected)
     def directory_selected(self, event: DirectoryTree.DirectorySelected):

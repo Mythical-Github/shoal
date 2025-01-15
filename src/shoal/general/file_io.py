@@ -1,4 +1,5 @@
 import os
+import ctypes
 from urllib.request import urlretrieve
 
 
@@ -45,3 +46,40 @@ def get_all_drive_letter_paths() -> list[str]:
         if os.path.exists(drive_letter):
             drive_letters.append(drive_letter)
     return drive_letters
+
+
+def get_drive_name(drive_letter: str) -> str:
+    # below is ai genned, but tested on windows
+    """
+    Returns the volume label of the specified drive letter using ctypes.
+    
+    Args:
+        drive_letter (str): The drive letter (e.g., 'C:', 'D:')
+    
+    Returns:
+        str: The volume label of the drive or 'No Name' if not found.
+    """
+    if not drive_letter.endswith(":"):
+        drive_letter += ":"
+    drive_letter += "\\"
+
+    # Create a buffer for the volume name
+    volume_name_buffer = ctypes.create_unicode_buffer(261)  # Max path length
+
+    # Call the Windows API function
+    result = ctypes.windll.kernel32.GetVolumeInformationW(
+        ctypes.c_wchar_p(drive_letter),  # Drive path
+        volume_name_buffer,             # Buffer to store volume name
+        ctypes.sizeof(volume_name_buffer),  # Size of the buffer
+        None,                           # Serial number (unused)
+        None,                           # Max component length (unused)
+        None,                           # File system flags (unused)
+        None,                           # File system name buffer (unused)
+        0                               # File system name buffer size (unused)
+    )
+
+    # Check if the function succeeded
+    if result:
+        return volume_name_buffer.value or "No Name"
+    else:
+        return "Unknown"
