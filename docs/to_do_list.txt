@@ -1,6 +1,7 @@
 
 
 To Do:
+    In drive selector have it show DriveName (DriveLetter:) instead of just DriveLetter:
     global launch args
     game specific launch args
     delay excessively prints out when it's set to 0
