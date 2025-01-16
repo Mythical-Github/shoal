@@ -69,7 +69,7 @@ def run_game_mw3():
 
 
 def run_alterware_t7_client():
-    cmd = f'"{get_t7x_client()}" -launcher'
+    cmd = f'"{get_t7x_client()}"'
     print_to_log_window(get_t7x_client())
     subprocess.Popen(
         cmd,
