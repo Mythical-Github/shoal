@@ -9,6 +9,7 @@ class Games(Enum):
     CALL_OF_DUTY_MODERN_WARFARE_III = 'Call of Duty Modern Warfare III'
     CALL_OF_DUTY_BLACK_OPS_I = 'Call of Duty Black Ops I'
     CALL_OF_DUTY_BLACK_OPS_II = 'Call of Duty Black Ops II'
+    CALL_OF_DUTY_BLACK_OPS_III = 'Call of Duty Black Ops III'
     CALL_OF_DUTY_GHOSTS = 'Call of Duty Ghosts'
     CALL_OF_DUTY_ADVANCED_WARFARE = 'Call of Duty Advanced Warfare'
 
@@ -24,7 +25,7 @@ class GameClients(Enum):
 
 
 class SelectionFilter(Enum):
-    All = 'All'
+    ALL = 'All'
     DIRECTORY = 'Directory'
     FILE = 'File'
 
@@ -129,6 +130,21 @@ games_info = [
                 game_mode=GameModes.MULTIPLAYER,
                 arg = 't6mp',
                 client=GameClients.PLUTONIUM
+            ),
+        ]
+    ),
+    Game(
+        game=Games.CALL_OF_DUTY_BLACK_OPS_III,
+        game_modes=[
+            GameMode(
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = '',
+                client=GameClients.ALTERWARE
+            ),
+            GameMode(
+                game_mode=GameModes.MULTIPLAYER,
+                arg = '',
+                client=GameClients.ALTERWARE
             ),
         ]
     ),
