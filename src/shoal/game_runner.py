@@ -8,7 +8,8 @@ from shoal.game_clients import (
     get_plutonium_appdata_dir,
     get_plutonium_bootstrapper,
     get_plutonium_modern_warfare_iii_config_path,
-    get_current_client
+    get_current_client,
+    get_t7x_client
 )
 from shoal.settings import (
     get_current_selected_game,
@@ -67,7 +68,31 @@ def run_game_mw3():
         )
 
 
+def run_alterware_t7_client():
+    command = f'"{get_t7x_client()}"'
+    args = []
+    for arg in args:
+        command = f'{command} {arg}'
+    for arg in get_game_specific_args():
+        command = f'{command} {arg}'
+    for arg in get_global_args():
+        command = f'{command} {arg}'
+    print_to_log_window(command)
+    subprocess.Popen(
+        command,
+        cwd = get_game_directory(),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdin=subprocess.DEVNULL
+    )
+    
+
+
 def run_alterware_game():
+    current_selected_game = get_current_selected_game()
+    if current_selected_game == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
+        run_alterware_t7_client()
+        return
     main_exe = get_alterware_launcher_path()
     args = [
         get_game_launch_arg(),

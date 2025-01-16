@@ -54,7 +54,8 @@ def configure_app():
     set_window_title(get_title_for_app())
     enable_vt100()
     # 52x60 columns/rows in terminal
-    set_terminal_size(app, 420, 680)
+    # set_terminal_size(app, 420, 680) # this was when using pygetwindow
+    set_terminal_size(app, -100, 180)
 
 
 def run_main_app():

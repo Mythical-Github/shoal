@@ -9,8 +9,10 @@ class Games(Enum):
     CALL_OF_DUTY_MODERN_WARFARE_III = 'Call of Duty Modern Warfare III'
     CALL_OF_DUTY_BLACK_OPS_I = 'Call of Duty Black Ops I'
     CALL_OF_DUTY_BLACK_OPS_II = 'Call of Duty Black Ops II'
+    CALL_OF_DUTY_BLACK_OPS_III = 'Call of Duty Black Ops III'
     CALL_OF_DUTY_GHOSTS = 'Call of Duty Ghosts'
     CALL_OF_DUTY_ADVANCED_WARFARE = 'Call of Duty Advanced Warfare'
+    CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE = 'Call of Duty Nazi Zombies Portable'
 
 
 class GameModes(Enum):
@@ -24,7 +26,7 @@ class GameClients(Enum):
 
 
 class SelectionFilter(Enum):
-    All = 'All'
+    ALL = 'All'
     DIRECTORY = 'Directory'
     FILE = 'File'
 
@@ -133,6 +135,21 @@ games_info = [
         ]
     ),
     Game(
+        game=Games.CALL_OF_DUTY_BLACK_OPS_III,
+        game_modes=[
+            GameMode(
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = None,
+                client=GameClients.ALTERWARE
+            ),
+            GameMode(
+                game_mode=GameModes.MULTIPLAYER,
+                arg = None,
+                client=GameClients.ALTERWARE
+            ),
+        ]
+    ),
+    Game(
         game=Games.CALL_OF_DUTY_GHOSTS,
         game_modes=[
             GameMode(
@@ -159,6 +176,16 @@ games_info = [
                 game_mode=GameModes.MULTIPLAYER,
                 arg = 's1-mod',
                 client=GameClients.ALTERWARE
+            )
+        ]
+    ),
+    Game(
+        game=Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE,
+        game_modes=[
+            GameMode(
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = None,
+                client=None
             )
         ]
     )
