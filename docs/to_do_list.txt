@@ -1,6 +1,10 @@
 
 
 To Do:
+    Not Applicable for Current Launcher option for certain things
+    when a profile is selected mention the client and stuff that it's using
+    nazi zombies portable stuff
+    for t7x, fix arg passing, username stuff, bypass launcher
     global launch args
     game specific launch args
 

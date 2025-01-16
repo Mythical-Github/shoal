@@ -69,10 +69,17 @@ def run_game_mw3():
 
 
 def run_alterware_t7_client():
-    cmd = f'"{get_t7x_client()}"'
-    print_to_log_window(get_t7x_client())
+    command = f'"{get_t7x_client()}"'
+    args = []
+    for arg in args:
+        command = f'{command} {arg}'
+    for arg in get_game_specific_args():
+        command = f'{command} {arg}'
+    for arg in get_global_args():
+        command = f'{command} {arg}'
+    print_to_log_window(command)
     subprocess.Popen(
-        cmd,
+        command,
         cwd = get_game_directory(),
         stdout=subprocess.DEVNULL,
         stderr=subprocess.DEVNULL,

@@ -1,21 +1,20 @@
 import os
 import sys
 
-import pygetwindow
+import pywinctl
 from textual.app import App
 
 
-def set_terminal_size(app: App, x: int, y: int):
-    all_windows = pygetwindow.getAllWindows()
+def set_terminal_size(app: object, x: int, y: int):
+    all_windows = pywinctl.getAllWindows()
 
-    # make this an equality check and not a substring check later
-    windows = [win for win in all_windows if app.TITLE in win.title]
+    windows = [win for win in all_windows if win.title == app.TITLE]
 
     for window in windows:
         try:
-            window.resizeTo(x, y)
+            window.resize(x, y)
         except Exception as e:
-            e
+            print(f"Error resizing window {window.title}: {e}")
 
 
 def set_window_title(window_title: str):
