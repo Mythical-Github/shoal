@@ -71,6 +71,7 @@ def run_game_mw3():
 def run_alterware_t7_client():
     command = f'"{get_t7x_client()}"'
     args = []
+    command = f'{command} -launch'
     for arg in args:
         command = f'{command} {arg}'
     for arg in get_game_specific_args():
