@@ -23,6 +23,7 @@ class GameModes(Enum):
 class GameClients(Enum):
     ALTERWARE = 'AlterWare'
     PLUTONIUM = 'Plutonium'
+    NAZI_ZOMBIES_PORTABLE = 'Nazi Zombies Portable'
 
 
 class SelectionFilter(Enum):

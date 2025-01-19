@@ -6,7 +6,11 @@ from shoal.base_widgets.base_widgets import (
     BaseHorizontalBox
 )
 from shoal.general.os_web_browser import open_website
-from shoal.game_clients import get_current_client_docs_link, get_current_client_forum_link
+from shoal.game_clients.game_clients import (
+    get_current_client_docs_link, 
+    get_current_client_forum_link,
+    get_current_client_github_link
+)
 
 
 class DocsButton(Static):
@@ -38,8 +42,7 @@ class GithubButton(Static):
         self.github_button = BaseButton(button_text="Github", button_width="100%")
         yield self.github_button
     def on_button_pressed(self) -> None:
-        url = "https://github.com/Mythical-Github/shoal"
-        open_website(url)
+        open_website(get_current_client_github_link())
 
     def on_mount(self):
         self.styles.width = "33%"

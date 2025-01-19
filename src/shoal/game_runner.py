@@ -2,15 +2,16 @@ import os
 import subprocess
 
 from shoal import data_structures
-from shoal.general.file_io import add_line_to_config
+from shoal.general.file_io import add_line_to_config, remove_lines_from_config_that_start_with_substring
 from shoal.logger import print_to_log_window
-from shoal.game_clients import (
+from shoal.game_clients.plutonium import (
     get_plutonium_appdata_dir,
     get_plutonium_bootstrapper,
-    get_plutonium_modern_warfare_iii_config_path,
-    get_current_client,
-    get_t7x_client
+    get_plutonium_modern_warfare_iii_config_path
 )
+from shoal.game_clients.nazi_zombies_portable import get_nazi_zombie_portable_executable_path, get_user_config_path
+from shoal.game_clients.game_clients import get_current_client
+from shoal.game_clients.alterware import get_t7x_client, get_t7x_user_config_path
 from shoal.settings import (
     get_current_selected_game,
     get_current_username,
@@ -19,7 +20,8 @@ from shoal.settings import (
     get_game_specific_args,
     get_global_args,
     get_alterware_launcher_path,
-    get_use_staging
+    get_use_staging,
+    get_global_args
 )
 
 def get_game_launch_arg() -> str:
@@ -75,7 +77,7 @@ def run_alterware_t7_client():
     for arg in args:
         command = f'{command} {arg}'
     for arg in get_game_specific_args():
-        command = f'{command} {arg}'
+        add_line_to_config(get_t7x_user_config_path(), arg)
     for arg in get_global_args():
         command = f'{command} {arg}'
     print_to_log_window(command)
@@ -87,7 +89,6 @@ def run_alterware_t7_client():
         stdin=subprocess.DEVNULL
     )
     
-
 
 def run_alterware_game():
     current_selected_game = get_current_selected_game()
@@ -128,20 +129,52 @@ def run_alterware_game():
     )
 
 
+def run_nazi_zombies_portable():
+    user_config_path = get_user_config_path()
+    if os.path.isfile(user_config_path):
+        remove_lines_from_config_that_start_with_substring(user_config_path, 'name ')
+        add_line_to_config(user_config_path, f'name "{get_current_username()}"')
+    for arg in get_game_specific_args():
+        add_line_to_config(user_config_path, arg)
+
+    command = get_nazi_zombie_portable_executable_path()
+    for arg in get_global_args():
+        command = f'{command} {arg}'
+    subprocess.Popen(
+        command,
+        cwd=os.path.dirname(get_nazi_zombie_portable_executable_path()),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdin=subprocess.DEVNULL
+    )
+
+
 def run_game():
-    if get_game_directory() == '':
+    game_directory = get_game_directory()
+    current_client = get_current_client()
+    current_game = get_current_selected_game()
+    # current_game_mode = get_currently_selected_game_mode()
+    current_username = get_current_username()
+    plutonium_appdata_dir = get_plutonium_appdata_dir()
+    plutonium_bootstrapper = get_plutonium_bootstrapper()
+    game_launch_arg = get_game_launch_arg()
+
+    if game_directory == '':
         print_to_log_window(f'You must provide the game directory, before running the game')
         return
-    if get_current_client() == data_structures.GameClients.ALTERWARE:
+    if current_game == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
+        run_nazi_zombies_portable()
+        return
+    if current_client == data_structures.GameClients.ALTERWARE:
         run_alterware_game()
-    elif get_game_launch_arg() == 'iw5mp':
+    elif game_launch_arg == 'iw5mp':
         run_game_mw3()
     else:
-        exe = f'"{get_plutonium_bootstrapper()}"'
-        exe = f'{exe} "{get_game_launch_arg()}"'
-        exe = f'{exe} "{get_game_directory()}"'
+        exe = f'"{plutonium_bootstrapper}"'
+        exe = f'{exe} "{game_launch_arg}"'
+        exe = f'{exe} "{game_directory}"'
         exe = f'{exe} +name'
-        exe = f'{exe} {get_current_username()}'
+        exe = f'{exe} {current_username}'
         exe = f'{exe} -lan'
 
         args = []
@@ -153,15 +186,15 @@ def run_game():
             exe = f'{exe} {arg}'
 
         print_to_log_window(exe)
-        os.chdir(get_plutonium_appdata_dir())
-        if not os.path.isdir(get_game_directory()):
-            print_to_log_window(f'The following game directory is not valid "{get_game_directory()}"')
-        elif not os.path.isfile(get_plutonium_bootstrapper()):
-            print_to_log_window(f'The following file path is not valid "{get_plutonium_bootstrapper()}"')
+        os.chdir(plutonium_appdata_dir)
+        if not os.path.isdir(game_directory):
+            print_to_log_window(f'The following game directory is not valid "{game_directory}"')
+        elif not os.path.isfile(plutonium_bootstrapper):
+            print_to_log_window(f'The following file path is not valid "{plutonium_bootstrapper}"')
         else:
             subprocess.Popen(
                 exe,
-                cwd=get_plutonium_appdata_dir(),
+                cwd=plutonium_appdata_dir,
                 stdout=subprocess.DEVNULL,
                 stderr=subprocess.DEVNULL,
                 stdin=subprocess.DEVNULL

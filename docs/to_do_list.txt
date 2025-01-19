@@ -1,19 +1,30 @@
 
 
 To Do:
-    Not Applicable for Current Launcher option for certain things
-    when a profile is selected mention the client and stuff that it's using
-    nazi zombies portable stuff
-    for t7x, fix arg passing, username stuff, bypass launcher
-    global launch args
-    game specific launch args
+    progress screen(for things like downloading, unzipping, cionfiguring, cleanuip, etc...)
+        deal with hitch on selecting/downloading nazi zombies portable
+
+    yes/no/options dialogue screen
+
+    Not Applicable for Current Selected Game labels for certain things (testing branch)
+    when a game/gamemode is selected, or a game is run, or something is downloaded mention the client and stuff that it's using
+    config does not exist yet, try running the game, and or changing a setting first and try again
+        (for mw3 multi pluto, t7x, and nazi zombies portable)
+
+    update the readme
 
 
 Later:
-    Automatically set font size to 8
+    alterware mw2 more setup needed
+    have pluto download locally options
+    test offline
     linux support, modern debian and ubuntu atleast
+    aurora client games
 
 
 Maybes:
+    remove global args section doesn't really make much sense anymore
+    add game specific launch args (two total config sections, game specific launch args like /max, and game client args like sv cheats)
+    Automatically set font size to 8
     non plutonium lan mode, needs a way to gen the token that gets passed to the launcher    
     dir scan option to find and populate game directories

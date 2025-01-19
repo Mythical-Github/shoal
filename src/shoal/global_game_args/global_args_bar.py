@@ -9,7 +9,7 @@ from shoal.base_widgets.base_widgets import (
     BaseLabel,
 )
 from shoal.logger import print_to_log_window
-from shoal.game_clients import get_plutonium_modern_warfare_iii_config_path
+from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
 from shoal.settings import (
     get_current_selected_game,
     get_global_args
