@@ -1,7 +1,7 @@
 import os
 import ctypes
 import zipfile
-from urllib.request import urlretrieve
+import requests
 
 
 def get_all_lines_in_config(config_path: str) -> list[str]:
@@ -57,9 +57,16 @@ def remove_lines_from_config_that_contain_substring(config_path: str, substring:
 def download_file(url: str, destination: str):
     try:
         print(f"Downloading from {url} to {destination}...")
-        urlretrieve(url, destination)
+        
+        with requests.get(url, stream=True) as response:
+            response.raise_for_status()
+            
+            with open(destination, 'wb') as file:
+                for chunk in response.iter_content(chunk_size=8192):
+                    file.write(chunk)
+
         print("Download completed.")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Failed to download file: {e}")
         raise
 

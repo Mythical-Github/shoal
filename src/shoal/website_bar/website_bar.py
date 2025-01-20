@@ -1,3 +1,4 @@
+from textual import work
 from textual.app import ComposeResult
 from textual.widgets import Static
 
@@ -53,9 +54,11 @@ def print_test_two():
     print_to_log_window('test finished')
 
 
-def print_test(test):
+def print_test():
     from shoal.logger import print_to_log_window
-    print_to_log_window(test)
+    from time import sleep
+    sleep(.1)
+    print_to_log_window('testing')
 
 
 class TestingButton(Static):
@@ -67,8 +70,12 @@ class TestingButton(Static):
         from shoal.base_widgets import setup_screen
         from shoal.main_app import app
         self.steps_to_functions = {
-            f"test {i}": print_test_two
-            for i in range(1, 51000)
+            "test": print_test,
+            "test1": print_test,
+            "test2": print_test,
+            "test3": print_test,
+            "test4": print_test,
+            "test5": print_test
         }
 
         self.final_function = print_test_two

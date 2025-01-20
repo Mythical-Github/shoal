@@ -2,7 +2,7 @@ from typing import Callable, Any, Tuple
 
 from textual import on
 from textual.widget import Widget
-from textual.screen import Screen, ModalScreen
+from textual.screen import Screen
 from textual.app import ComposeResult
 from textual.containers import VerticalScroll, Vertical
 from textual.widgets import Header, Static, TextArea, DirectoryTree

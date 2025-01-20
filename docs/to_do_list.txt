@@ -2,27 +2,20 @@
 
 
 To Do:
-    progress screen(for things like downloading, unzipping, cionfiguring, cleanuip, etc...)
-        deal with hitch on selecting/downloading nazi zombies portable, alterware, plutonium, t7x, mw2
-        takes in a list of tuples
-            each tuple
-                action text
-                function to exec
-        takes in a final function to call when everything finishes
-
-
+    deal with hitch on selecting/downloading nazi zombies portable, alterware, t7x
     update the readme
 
 
 Later:
     alterware mw2 more setup needed
     have pluto download locally options
-    aurora client games
     test offline
     linux support, modern debian and ubuntu atleast
 
 
 Maybes:
+    aurora client games
+    make dir scanning more performant
     config edit for all game args, also pass when possible through game launch for when configs don't already exist
     remove global args section doesn't really make much sense anymore
     add game specific launch args (two total config sections, game specific launch args like /max, and game client args like sv cheats)

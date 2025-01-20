@@ -33,11 +33,37 @@ def get_t7x_download_url() -> str:
     return 'https://master.bo3.eu/t7x/t7x.exe'
 
 
-def download_t7x_client():
+def actually_download_t7x():
     t7x_path = get_t7x_client_path()
     if not os.path.isfile(t7x_path):
         download_file(get_t7x_download_url(), t7x_path)
-        
+
+
+def done_downloading_t7x_message():
+    return
+
+
+def download_t7x_client():
+    from shoal.main_app import app
+    from shoal.base_widgets import setup_screen
+    download_t7x_screen = setup_screen.SetupScreen(
+            step_text_to_step_functions={
+                "Downloading T7X Client.": actually_download_t7x,
+                "Downloading T7X Client..": actually_download_t7x,
+                "Downloading T7X Client...": actually_download_t7x,
+            },
+            finished_all_steps_function=done_downloading_t7x_message,
+            widgets_to_refresh_on_screen_pop=[]
+        )
+    download_t7x_screen
+    app.push_screen(download_t7x_screen)
+
+
+# def download_t7x_client():
+#     t7x_path = get_t7x_client_path()
+#     if not os.path.isfile(t7x_path):
+#         download_file(get_t7x_download_url(), t7x_path)
+
 
 def get_t7x_client_path() -> str:
     return os.path.normpath(f'{get_game_directory()}/t7x.exe')

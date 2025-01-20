@@ -1,3 +1,4 @@
+from textual import work
 from textual.screen import Screen
 from textual.app import ComposeResult
 from textual.containers import VerticalScroll, Vertical
@@ -51,6 +52,7 @@ class SetupScreenProgressBar(Static):
         self.progress_bar.advance(1)
 
 
+    @work(thread=True)
     def run_steps(self):
         for step_text, step_function in self.step_text_to_step_functions.items():
             self.update_label(step_text)
@@ -61,8 +63,8 @@ class SetupScreenProgressBar(Static):
             widget.refresh(recompose=True)
         
         from shoal.main_app import app
-        app.pop_screen()
-
+        app.call_from_thread(app.pop_screen)
+        
         self.finished_all_steps_function()
 
 
@@ -145,7 +147,4 @@ class SetupScreen(Screen):
         self.vertical_scroll.styles.padding = 0
         self.vertical_scroll.styles.border = ("solid", "grey")
         self.vertical_scroll.styles.align = ('center', 'middle')
-
-    def _on_screen_resume(self):
         self.text_input_main_layout.progress_bar.run_steps()
-        return super()._on_screen_resume()
