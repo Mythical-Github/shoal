@@ -9,10 +9,10 @@ from shoal.base_widgets.base_widgets import (
 )
 from shoal.logger import print_to_log_window
 from shoal.settings import (
+    set_auto_run_game,
     get_auto_run_game,
     get_auto_run_game_delay,
     get_use_staging,
-    set_auto_run_game,
     set_use_staging
 )
 

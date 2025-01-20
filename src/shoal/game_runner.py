@@ -10,7 +10,7 @@ from shoal.game_clients.plutonium import (
     get_plutonium_modern_warfare_iii_config_path
 )
 from shoal.game_clients.nazi_zombies_portable import get_nazi_zombie_portable_executable_path, get_user_config_path
-from shoal.game_clients.game_clients import get_current_client
+from shoal.game_clients.game_clients import get_current_client, get_current_client_docs_link
 from shoal.game_clients.alterware import get_t7x_client, get_t7x_user_config_path
 from shoal.settings import (
     get_current_selected_game,
@@ -149,7 +149,61 @@ def run_nazi_zombies_portable():
     )
 
 
+def testing_branch_warning():
+    invalid_warning_part_one = 'You have Testing branch enabled for an invalid game'
+    invalid_warning_part_two = 'The game will be launched with the Default branch'
+    print_to_log_window(invalid_warning_part_one)
+    print_to_log_window(invalid_warning_part_two)
+
+
+def testing_branch_warning_check():
+    if get_use_staging():
+        if get_current_selected_game() in {
+            data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE, 
+            data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III
+        }:
+            testing_branch_warning()
+
+
+def no_user_config_exists_warning():
+    no_user_config_warning_part_one = 'There is no config yet generated for this client, game, and/or game mode'
+    no_user_config_warning_part_two = 'Arg passing and username setting may not work function'
+    no_user_config_warning_part_three = 'until next launch/after in game configuration generates a config'
+    print_to_log_window(no_user_config_warning_part_one)
+    print_to_log_window(no_user_config_warning_part_two)
+    print_to_log_window(no_user_config_warning_part_three)
+
+
+def no_user_config_exists_check():
+    current_game = get_current_selected_game
+    current_game_mode = get_currently_selected_game_mode
+    if current_game == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
+        from shoal.game_clients.alterware import get_t7x_user_config_path
+        if not os.path.isfile(get_t7x_user_config_path()):
+            no_user_config_exists_warning()
+    if current_game == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
+        from shoal.game_clients.nazi_zombies_portable import get_user_config_path
+        if not os.path.isfile(get_user_config_path()):
+            no_user_config_exists_warning()
+    if current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III:
+        if current_game_mode == data_structures.GameModes.MULTIPLAYER:
+            from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
+            if not os.path.isfile(get_plutonium_modern_warfare_iii_config_path()):
+                no_user_config_exists_warning()
+
+
+def client_info_message():
+    print_to_log_window(f'Launch Information:')
+    print_to_log_window(f'Game: "{get_current_selected_game().value}"')
+    print_to_log_window(f'Game Mode: "{get_currently_selected_game_mode().value}"')
+    print_to_log_window(f'Client/Project: "{get_current_client().value}"')
+    print_to_log_window(f'Client/Project Website: "{get_current_client_docs_link()}"')
+
+
 def run_game():
+    client_info_message()
+    testing_branch_warning_check()
+    no_user_config_exists_check()
     game_directory = get_game_directory()
     current_client = get_current_client()
     current_game = get_current_selected_game()
@@ -184,7 +238,6 @@ def run_game():
             exe = f'{exe} {arg}'
         for arg in get_global_args():
             exe = f'{exe} {arg}'
-
         print_to_log_window(exe)
         os.chdir(plutonium_appdata_dir)
         if not os.path.isdir(game_directory):
