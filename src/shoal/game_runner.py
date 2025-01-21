@@ -202,38 +202,16 @@ def client_info_message():
     print_to_log_window(f'Client/Project Website: "{get_current_client_docs_link()}"')
 
 
-# def run_mw_remastered_2017():
-#     command = get_h1_mod_exec_path()
-#     if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
-#         command = f'{command} -singleplayer'
-#     else:
-#         command = f'{command} -multiplayer'
-#     for arg in get_global_args():
-#         command = f'{command} {arg}'
-#     for arg in get_game_specific_args():
-#         command = f'{command} {arg}'
-#     print_to_log_window(command)
-#     subprocess.Popen(
-#         command,
-#         cwd=os.path.dirname(get_h1_mod_exec_path()),
-#         stdout=subprocess.DEVNULL,
-#         stderr=subprocess.DEVNULL,
-#         stdin=subprocess.DEVNULL
-#     )
-
-
 def run_mw_remastered_2017():
     command = get_h1_mod_exec_path()
-    for arg in get_global_args():
-        command = f'{command} {arg}'
     if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
         command = f'{command} -singleplayer'
     else:
         command = f'{command} -multiplayer'
-    combined_string = ''
+    for arg in get_global_args():
+        command = f'{command} {arg}'
     for arg in get_game_specific_args():
-        combined_string = f'{combined_string} {arg}'
-    command = f'{command} --pass "{combined_string.strip()}"'
+        command = f'{command} {arg}'
     print_to_log_window(command)
     subprocess.Popen(
         command,
@@ -242,6 +220,28 @@ def run_mw_remastered_2017():
         stderr=subprocess.DEVNULL,
         stdin=subprocess.DEVNULL
     )
+
+
+# def run_mw_remastered_2017():
+#     command = get_h1_mod_exec_path()
+#     for arg in get_global_args():
+#         command = f'{command} {arg}'
+#     if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
+#         command = f'{command} -singleplayer'
+#     else:
+#         command = f'{command} -multiplayer'
+#     combined_string = ''
+#     for arg in get_game_specific_args():
+#         combined_string = f'{combined_string} {arg}'
+#     command = f'{command} --pass "{combined_string.strip()}"'
+#     print_to_log_window(command)
+#     subprocess.Popen(
+#         command,
+#         cwd=os.path.dirname(get_h1_mod_exec_path()),
+#         stdout=subprocess.DEVNULL,
+#         stderr=subprocess.DEVNULL,
+#         stdin=subprocess.DEVNULL
+#     )
 
 
 def run_game():
