@@ -13,7 +13,7 @@ class Games(Enum):
     CALL_OF_DUTY_GHOSTS = 'Call of Duty Ghosts'
     CALL_OF_DUTY_ADVANCED_WARFARE = 'Call of Duty Advanced Warfare'
     CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017 = 'Call of Duty Modern Warfare Remastered 2017'
-    CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE = 'Call of Duty Nazi Zombies Portable'
+    CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE = 'Nazi Zombies: Portable'
 
 
 class GameModes(Enum):
