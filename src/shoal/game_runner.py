@@ -2,6 +2,7 @@ import os
 import subprocess
 
 from shoal import data_structures
+from shoal.game_clients.aurora import get_h1_mod_exec_path
 from shoal.general.file_io import add_line_to_config, remove_lines_from_config_that_start_with_substring
 from shoal.logger import print_to_log_window
 from shoal.game_clients.plutonium import (
@@ -9,7 +10,7 @@ from shoal.game_clients.plutonium import (
     get_plutonium_bootstrapper,
     get_plutonium_modern_warfare_iii_config_path
 )
-from shoal.game_clients.nazi_zombies_portable import get_nazi_zombie_portable_executable_path, get_user_config_path
+from shoal.game_clients.nazi_zombies_portable import get_nazi_zombie_portable_executable_path, get_nzp_user_config_path
 from shoal.game_clients.game_clients import get_current_client, get_current_client_docs_link
 from shoal.game_clients.alterware import get_t7x_client, get_t7x_user_config_path
 from shoal.settings import (
@@ -130,7 +131,7 @@ def run_alterware_game():
 
 
 def run_nazi_zombies_portable():
-    user_config_path = get_user_config_path()
+    user_config_path = get_nzp_user_config_path()
     if os.path.isfile(user_config_path):
         remove_lines_from_config_that_start_with_substring(user_config_path, 'name ')
         add_line_to_config(user_config_path, f'name "{get_current_username()}"')
@@ -160,7 +161,8 @@ def testing_branch_warning_check():
     if get_use_staging():
         if get_current_selected_game() in {
             data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE, 
-            data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III
+            data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III,
+            data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017
         }:
             testing_branch_warning()
 
@@ -182,10 +184,10 @@ def no_user_config_exists_check():
         if not os.path.isfile(get_t7x_user_config_path()):
             no_user_config_exists_warning()
     if current_game == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
-        from shoal.game_clients.nazi_zombies_portable import get_user_config_path
-        if not os.path.isfile(get_user_config_path()):
+        from shoal.game_clients.nazi_zombies_portable import get_nzp_user_config_path
+        if not os.path.isfile(get_nzp_user_config_path()):
             no_user_config_exists_warning()
-    if current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III:
+    if current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011:
         if current_game_mode == data_structures.GameModes.MULTIPLAYER:
             from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
             if not os.path.isfile(get_plutonium_modern_warfare_iii_config_path()):
@@ -198,6 +200,48 @@ def client_info_message():
     print_to_log_window(f'Game Mode: "{get_currently_selected_game_mode().value}"')
     print_to_log_window(f'Client/Project: "{get_current_client().value}"')
     print_to_log_window(f'Client/Project Website: "{get_current_client_docs_link()}"')
+
+
+# def run_mw_remastered_2017():
+#     command = get_h1_mod_exec_path()
+#     if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
+#         command = f'{command} -singleplayer'
+#     else:
+#         command = f'{command} -multiplayer'
+#     for arg in get_global_args():
+#         command = f'{command} {arg}'
+#     for arg in get_game_specific_args():
+#         command = f'{command} {arg}'
+#     print_to_log_window(command)
+#     subprocess.Popen(
+#         command,
+#         cwd=os.path.dirname(get_h1_mod_exec_path()),
+#         stdout=subprocess.DEVNULL,
+#         stderr=subprocess.DEVNULL,
+#         stdin=subprocess.DEVNULL
+#     )
+
+
+def run_mw_remastered_2017():
+    command = get_h1_mod_exec_path()
+    for arg in get_global_args():
+        command = f'{command} {arg}'
+    if get_currently_selected_game_mode() == data_structures.GameModes.SINGLE_PLAYER:
+        command = f'{command} -singleplayer'
+    else:
+        command = f'{command} -multiplayer'
+    combined_string = ''
+    for arg in get_game_specific_args():
+        combined_string = f'{combined_string} {arg}'
+    command = f'{command} --pass "{combined_string.strip()}"'
+    print_to_log_window(command)
+    subprocess.Popen(
+        command,
+        cwd=os.path.dirname(get_h1_mod_exec_path()),
+        stdout=subprocess.DEVNULL,
+        stderr=subprocess.DEVNULL,
+        stdin=subprocess.DEVNULL
+    )
 
 
 def run_game():
@@ -215,6 +259,9 @@ def run_game():
 
     if game_directory == '':
         print_to_log_window(f'You must provide the game directory, before running the game')
+        return
+    if current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017:
+        run_mw_remastered_2017()
         return
     if current_game == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
         run_nazi_zombies_portable()

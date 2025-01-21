@@ -22,3 +22,4 @@ logger = LauncherLog()
 
 def print_to_log_window(message: str):
     logger.rich_log.write(message)
+    logger.rich_log.scroll_end()

@@ -425,18 +425,18 @@ def add_game_specific_arg(game_arg: str):
 
 def remove_game_specific_arg(game_arg: str):
     from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
-    from shoal.game_clients.nazi_zombies_portable import get_user_config_path
+    from shoal.game_clients.nazi_zombies_portable import get_nzp_user_config_path
     from shoal.game_clients.alterware import get_t7x_user_config_path
     game_args = get_game_specific_args()
     game_args.remove(game_arg)
     set_game_specific_args(game_args)
-    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III:
+    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011:
         if get_currently_selected_game_mode() == data_structures.GameModes.MULTIPLAYER:
             remove_line_from_config(get_plutonium_modern_warfare_iii_config_path(), game_arg)
     if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
         remove_line_from_config(get_t7x_user_config_path(), game_arg)
     if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
-        remove_line_from_config(get_user_config_path(), game_arg)
+        remove_line_from_config(get_nzp_user_config_path(), game_arg)
 
 
 

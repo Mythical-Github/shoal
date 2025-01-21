@@ -1,5 +1,10 @@
 from shoal import data_structures
 from shoal.settings import get_current_selected_game, get_currently_selected_game_mode
+from shoal.game_clients.aurora import (
+    get_docs_link, 
+    get_community_link, 
+    get_github_link
+)
 from shoal.game_clients.alterware import (
     get_alterware_docs_link, 
     get_alterware_forums_link, 
@@ -41,15 +46,17 @@ def get_current_client() -> data_structures.GameClients:
     client = None
     if current_game == data_structures.Games.CALL_OF_DUTY_GHOSTS:
         client = data_structures.GameClients.ALTERWARE
+    elif current_game ==  data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017:
+        client = data_structures.GameClients.AURORA
     elif current_game ==  data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
         client = data_structures.GameClients.NAZI_ZOMBIES_PORTABLE
     elif current_game == data_structures.Games.CALL_OF_DUTY_ADVANCED_WARFARE:
         client = data_structures.GameClients.ALTERWARE
-    elif current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_II:
+    elif current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_II_2009:
         client = data_structures.GameClients.ALTERWARE
     elif current_game == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
         client = data_structures.GameClients.ALTERWARE
-    elif current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III:
+    elif current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011:
         if current_game_mode == data_structures.GameModes.SINGLE_PLAYER:
             client = data_structures.GameClients.ALTERWARE
         else:
@@ -64,6 +71,8 @@ def get_current_client_docs_link() -> str:
         return get_alterware_docs_link()
     elif get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
         return get_nazi_zombie_portable_docs()
+    elif get_current_client() == data_structures.GameClients.AURORA:
+        return get_docs_link()
     else:
         return get_plutonium_docs_link()
 
@@ -73,6 +82,8 @@ def get_current_client_forum_link() -> str:
         return get_alterware_forums_link()
     elif get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
         return get_nazi_zombie_portable_forums_link()
+    elif get_current_client() == data_structures.GameClients.AURORA:
+        return get_community_link()
     else:
         return get_plutonium_forums_link()
 
@@ -84,6 +95,8 @@ def get_current_client_github_link() -> str:
         link = get_plutonium_github_link()
     elif current_client == data_structures.GameClients.ALTERWARE:
         link = get_alterware_github_link()
+    elif current_client == data_structures.GameClients.AURORA:
+        link = get_github_link()
     else:
         link = get_nazi_zombie_portable_github_link()
     return link

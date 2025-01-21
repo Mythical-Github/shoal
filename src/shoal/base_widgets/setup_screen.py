@@ -64,7 +64,7 @@ class SetupScreenProgressBar(Static):
         
         from shoal.main_app import app
         app.call_from_thread(app.pop_screen)
-        
+
         self.finished_all_steps_function()
 
 
@@ -121,12 +121,14 @@ class SetupScreen(Screen):
         self,
         step_text_to_step_functions,
         finished_all_steps_function,
-        widgets_to_refresh_on_screen_pop
+        widgets_to_refresh_on_screen_pop,
+        screen_label_text
     ):
         super().__init__()
         self.step_text_to_step_functions = step_text_to_step_functions
         self.finished_all_steps_function = finished_all_steps_function
         self.widgets_to_refresh_on_screen_pop = widgets_to_refresh_on_screen_pop
+        self.screen_label_text = screen_label_text
 
     def compose(self) -> ComposeResult:
         self.header = Header()
@@ -134,7 +136,7 @@ class SetupScreen(Screen):
             self.step_text_to_step_functions,
             self.finished_all_steps_function,
             self.widgets_to_refresh_on_screen_pop,
-            'Testing Screen Label Text'
+            self.screen_label_text
         )
         self.vertical_scroll = VerticalScroll()
         with self.vertical_scroll:

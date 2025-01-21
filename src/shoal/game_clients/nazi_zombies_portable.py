@@ -32,14 +32,33 @@ def get_nazi_zombie_portable_github_link():
     return 'https://github.com/nzp-team/nzportable'
 
 
-def download_nazi_zombie_portable():
-    from shoal.general.file_io import download_file, unzip_file
+def installing_nzp_step_one():
+    from shoal.general.file_io import download_file
     output_dir = os.path.normpath(os.path.dirname(get_nazi_zombie_portable_executable_path()))
     output_zip = os.path.normpath(os.path.join(output_dir, 'nazi_zombies_portable.zip'))
     os.makedirs(output_dir, exist_ok=True)
     download_file(get_nazi_zombie_portable_download_link(), output_zip)
+
+
+def installing_nzp_step_two():
+    from shoal.general.file_io import unzip_file
+    output_dir = os.path.normpath(os.path.dirname(get_nazi_zombie_portable_executable_path()))
+    output_zip = os.path.normpath(os.path.join(output_dir, 'nazi_zombies_portable.zip'))
     unzip_file(output_zip, os.path.dirname(output_zip))
+
+
+def installing_nzp_step_three():
+    from shoal.settings import set_game_directory
+    output_dir = os.path.normpath(os.path.dirname(get_nazi_zombie_portable_executable_path()))
+    output_zip = os.path.normpath(os.path.join(output_dir, 'nazi_zombies_portable.zip'))
+    set_game_directory(os.path.dirname(get_nazi_zombie_portable_executable_path()))
     os.remove(output_zip)
+
+
+def download_nazi_zombie_portable():
+    installing_nzp_step_one()
+    installing_nzp_step_two()
+    installing_nzp_step_three()
 
 
 def ensure_nazi_zombie_portable_is_installed():
@@ -60,5 +79,5 @@ def get_nazi_zombie_portable_executable_path():
         return os.path.normpath(os.path.join(base_path, 'nzportable64-sdl'))
 
 
-def get_user_config_path() -> str:
+def get_nzp_user_config_path() -> str:
     return os.path.normpath(os.path.join(get_game_directory(), 'nzp', 'user_settings.cfg'))

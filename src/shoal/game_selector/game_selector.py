@@ -50,9 +50,6 @@ class GameSelector(Static):
         app.game_dir_select.refresh(recompose=True)
         app.game_args_section.refresh(recompose=True)
         print_to_log_window(f'Loaded settings for "{get_current_selected_game().value}"')
-        if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
-            from shoal.game_clients.nazi_zombies_portable import ensure_nazi_zombie_portable_is_installed
-            ensure_nazi_zombie_portable_is_installed()
             
 
     def on_mount(self):

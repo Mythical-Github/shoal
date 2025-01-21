@@ -2,7 +2,6 @@
 
 
 To Do:
-    deal with hitch on selecting/downloading nazi zombies portable, alterware, t7x
     update the readme
 
 
@@ -14,7 +13,7 @@ Later:
 
 
 Maybes:
-    aurora client games
+    username and arg passing for aurora clients
     make dir scanning more performant
     config edit for all game args, also pass when possible through game launch for when configs don't already exist
     remove global args section doesn't really make much sense anymore

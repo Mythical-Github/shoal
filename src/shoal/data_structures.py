@@ -5,13 +5,14 @@ from dataclasses import dataclass
 
 class Games(Enum):
     CALL_OF_DUTY_WORLD_AT_WAR = 'Call of Duty World at War'
-    CALL_OF_DUTY_MODERN_WARFARE_II = 'Call of Duty Modern Warfare II'
-    CALL_OF_DUTY_MODERN_WARFARE_III = 'Call of Duty Modern Warfare III'
+    CALL_OF_DUTY_MODERN_WARFARE_II_2009 = 'Call of Duty Modern Warfare II 2009'
+    CALL_OF_DUTY_MODERN_WARFARE_III_2011 = 'Call of Duty Modern Warfare III 2011'
     CALL_OF_DUTY_BLACK_OPS_I = 'Call of Duty Black Ops I'
     CALL_OF_DUTY_BLACK_OPS_II = 'Call of Duty Black Ops II'
     CALL_OF_DUTY_BLACK_OPS_III = 'Call of Duty Black Ops III'
     CALL_OF_DUTY_GHOSTS = 'Call of Duty Ghosts'
     CALL_OF_DUTY_ADVANCED_WARFARE = 'Call of Duty Advanced Warfare'
+    CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017 = 'Call of Duty Modern Warfare Remastered 2017'
     CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE = 'Call of Duty Nazi Zombies Portable'
 
 
@@ -23,6 +24,7 @@ class GameModes(Enum):
 class GameClients(Enum):
     ALTERWARE = 'AlterWare'
     PLUTONIUM = 'Plutonium'
+    AURORA = 'Aurora'
     NAZI_ZOMBIES_PORTABLE = 'Nazi Zombies Portable'
 
 
@@ -76,7 +78,7 @@ games_info = [
         ]
     ),
     Game(
-        game=Games.CALL_OF_DUTY_MODERN_WARFARE_II,
+        game=Games.CALL_OF_DUTY_MODERN_WARFARE_II_2009,
         game_modes=[
             GameMode(
                 game_mode=GameModes.SINGLE_PLAYER,
@@ -91,7 +93,7 @@ games_info = [
         ]
     ),
     Game(
-        game=Games.CALL_OF_DUTY_MODERN_WARFARE_III,
+        game=Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011,
         game_modes=[
             GameMode(
                 game_mode=GameModes.SINGLE_PLAYER,
@@ -187,6 +189,21 @@ games_info = [
                 game_mode=GameModes.SINGLE_PLAYER,
                 arg = None,
                 client=None
+            )
+        ]
+    ),
+    Game(
+        game=Games.CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017,
+        game_modes=[
+            GameMode(
+                game_mode=GameModes.SINGLE_PLAYER,
+                arg = None,
+                client=GameClients.AURORA
+            ),
+            GameMode(
+                game_mode=GameModes.MULTIPLAYER,
+                arg = None,
+                client=GameClients.AURORA
             )
         ]
     )
