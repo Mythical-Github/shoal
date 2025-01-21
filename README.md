@@ -1,19 +1,24 @@
 ## Shoal
 
-This is a text-based UI launcher for the following Call of Duty mod clients:
+This is a text-based UI launcher for the following Call of Duty mod clients/projects:
 
 - [AlterWare](https://alterware.dev/)
 - [Plutonium](https://plutonium.pw/)
+- [Aurora](https://auroramod.dev/)
+- [Nazi Zombies Portable](https://docs.nzp.gay/landing/)
 
 It supports the following games:
 
 - [Call of Duty: World at War](https://store.steampowered.com/app/10090/Call_of_Duty_World_at_War/)
-- [Call of Duty: Modern Warfare 2](https://store.steampowered.com/app/10180/Call_of_Duty_Modern_Warfare_2/)
-- [Call of Duty: Modern Warfare 3](https://store.steampowered.com/app/115300/Call_of_Duty_Modern_Warfare_3_2011/)
+- [Call of Duty: Modern Warfare II 2009](https://store.steampowered.com/app/10180/Call_of_Duty_Modern_Warfare_2/)
+- [Call of Duty: Modern Warfare III 2011](https://store.steampowered.com/app/115300/Call_of_Duty_Modern_Warfare_3_2011/)
 - [Call of Duty: Black Ops](https://store.steampowered.com/app/42700/Call_of_Duty_Black_Ops/)
 - [Call of Duty: Black Ops II](https://store.steampowered.com/app/202970/Call_of_Duty_Black_Ops_II/)
+- [Call of Duty: Black Ops III](https://store.steampowered.com/app/311210/Call_of_Duty_Black_Ops_III/)
 - [Call of Duty: Ghosts](https://store.steampowered.com/app/209160/Call_of_Duty_Ghosts/)
 - [Call of Duty: Advanced Warfare](https://store.steampowered.com/app/209650/Call_of_Duty_Advanced_Warfare/)
+- [Call of Duty: Modern Warfare Remastered 2017](https://store.steampowered.com/app/393080/Call_of_Duty_Modern_Warfare_Remastered_2017/)
+- [Call of Duty Nazi Zombies Portable](https://github.com/nzp-team/nzportable/releases/latest)
 
 
 ### Download
