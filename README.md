@@ -2,8 +2,8 @@
 
 This is a text-based UI launcher for the following Call of Duty mod clients/projects:
 
-- [AlterWare](https://alterware.dev/)
 - [Plutonium](https://plutonium.pw/)
+- [AlterWare](https://alterware.dev/)
 - [Aurora](https://auroramod.dev/)
 - [Nazi Zombies Portable](https://docs.nzp.gay/landing/)
 
