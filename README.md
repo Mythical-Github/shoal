@@ -5,7 +5,7 @@ This is a text-based UI launcher for the following Call of Duty mod clients/proj
 - [Plutonium](https://plutonium.pw/)
 - [AlterWare](https://alterware.dev/)
 - [Aurora](https://auroramod.dev/)
-- [Nazi Zombies Portable](https://docs.nzp.gay/landing/)
+- [Nazi Zombies: Portable](https://docs.nzp.gay/landing/)
 
 It supports the following games:
 
@@ -18,7 +18,7 @@ It supports the following games:
 - [Call of Duty: Ghosts](https://store.steampowered.com/app/209160/Call_of_Duty_Ghosts/)
 - [Call of Duty: Advanced Warfare](https://store.steampowered.com/app/209650/Call_of_Duty_Advanced_Warfare/)
 - [Call of Duty: Modern Warfare Remastered 2017](https://store.steampowered.com/app/393080/Call_of_Duty_Modern_Warfare_Remastered_2017/)
-- [Call of Duty Nazi Zombies Portable](https://github.com/nzp-team/nzportable/releases/latest)
+- [Nazi Zombies: Portable](https://github.com/nzp-team/nzportable/releases/latest)
 
 
 ### Download
