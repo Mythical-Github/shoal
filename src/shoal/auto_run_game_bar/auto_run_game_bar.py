@@ -9,17 +9,17 @@ from shoal.base_widgets.base_widgets import (
 )
 from shoal.logger import print_to_log_window
 from shoal.settings import (
+    set_auto_run_game,
     get_auto_run_game,
     get_auto_run_game_delay,
     get_use_staging,
-    set_auto_run_game,
     set_use_staging
 )
 
 
 def generate_spinbox_numbers():
     current = 0.1
-    max_num = 999
+    max_num = 1000
     while current <= (max_num):
         yield round(current, 1)
         current += 0.1

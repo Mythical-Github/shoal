@@ -1,6 +1,7 @@
 import os
 import ctypes
-from urllib.request import urlretrieve
+import zipfile
+import requests
 
 
 def get_all_lines_in_config(config_path: str) -> list[str]:
@@ -29,12 +30,43 @@ def does_config_have_line(config_path: str, line: str) -> bool:
     return line + '\n' in get_all_lines_in_config(config_path)
 
 
+def remove_lines_from_config_that_start_with_substring(config_path: str, substring: str):
+    new_lines = []
+    for line in get_all_lines_in_config(config_path):
+        if not line.startswith(substring):
+            new_lines.append(line)
+    set_all_lines_in_config(config_path, new_lines)
+
+
+def remove_lines_from_config_that_end_with_substring(config_path: str, substring: str):
+    new_lines = []
+    for line in get_all_lines_in_config(config_path):
+        if not line.endswith(substring):
+            new_lines.append(line)
+    set_all_lines_in_config(config_path, new_lines)
+
+
+def remove_lines_from_config_that_contain_substring(config_path: str, substring: str):
+    new_lines = []
+    for line in get_all_lines_in_config(config_path):
+        if not line in (substring):
+            new_lines.append(line)
+    set_all_lines_in_config(config_path, new_lines)
+
+
 def download_file(url: str, destination: str):
     try:
         print(f"Downloading from {url} to {destination}...")
-        urlretrieve(url, destination)
+        
+        with requests.get(url, stream=True) as response:
+            response.raise_for_status()
+            
+            with open(destination, 'wb') as file:
+                for chunk in response.iter_content(chunk_size=8192):
+                    file.write(chunk)
+
         print("Download completed.")
-    except Exception as e:
+    except requests.exceptions.RequestException as e:
         print(f"Failed to download file: {e}")
         raise
 
@@ -83,3 +115,9 @@ def get_drive_name(drive_letter: str) -> str:
         return volume_name_buffer.value or "No Name"
     else:
         return "Unknown"
+
+
+def unzip_file(zip_path, output_dir):
+    os.makedirs(output_dir, exist_ok=True)
+    with zipfile.ZipFile(zip_path, 'r') as zip_ref:
+        zip_ref.extractall(output_dir)

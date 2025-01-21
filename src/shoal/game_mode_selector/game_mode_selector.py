@@ -8,7 +8,7 @@ from shoal.base_widgets.base_widgets import (
     BaseLabel
 )
 from shoal.logger import print_to_log_window
-from shoal.game_clients import get_game_mode_options
+from shoal.game_clients.game_clients import get_game_mode_options
 from shoal.settings import (
     get_current_selected_game,
     get_currently_selected_game_mode,

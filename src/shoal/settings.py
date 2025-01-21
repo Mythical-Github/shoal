@@ -131,19 +131,37 @@ def get_current_username() -> str:
     return username
 
 
+def t7x_check(username: str):
+    from shoal.game_clients.game_clients import get_current_config_path_for_alterware_games
+    config_path = get_current_config_path_for_alterware_games()
+    if os.path.isfile(config_path):
+        from shoal.general import file_io
+        all_lines = file_io.get_all_lines_in_config(config_path)
+        new_all_lines = []
+        for line in all_lines:
+            if not line.startswith('set sv_hostname'):
+                new_all_lines.append(line)
+        new_all_lines.append(f'set sv_hostname "{username}"')
+        file_io.set_all_lines_in_config(config_path, new_all_lines)
+
+
 def alterware_username_check(username: str):
-    from shoal.game_clients import get_current_config_path_for_alterware_games, get_current_client
-    if get_current_client() == data_structures.GameClients.ALTERWARE:
-        config_path = get_current_config_path_for_alterware_games()
-        if os.path.isfile(config_path):
-            from shoal.general import file_io
-            all_lines = file_io.get_all_lines_in_config(config_path)
-            new_all_lines = []
-            for line in all_lines:
-                if not line.startswith('seta name'):
-                    new_all_lines.append(line)
-            new_all_lines.append(f'seta name "{username}"')
-            file_io.set_all_lines_in_config(config_path, new_all_lines)
+    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
+        t7x_check(username)
+    else:
+        from shoal.game_clients.alterware import get_current_config_path_for_alterware_games
+        from shoal.game_clients.game_clients import get_current_client
+        if get_current_client() == data_structures.GameClients.ALTERWARE:
+            config_path = get_current_config_path_for_alterware_games()
+            if os.path.isfile(config_path):
+                from shoal.general import file_io
+                all_lines = file_io.get_all_lines_in_config(config_path)
+                new_all_lines = []
+                for line in all_lines:
+                    if not line.startswith('seta name'):
+                        new_all_lines.append(line)
+                new_all_lines.append(f'seta name "{username}"')
+                file_io.set_all_lines_in_config(config_path, new_all_lines)
 
 
 def set_username(username: str):
@@ -205,7 +223,7 @@ def get_currently_selected_game_mode() -> data_structures.GameModes:
             break
 
     if not was_in:
-        from shoal.game_clients import get_game_mode_options
+        from shoal.game_clients.game_clients import get_game_mode_options
         current_game_mode = get_game_mode_options()[0][0]
         game_specific_section['last_selected_game_mode'] = current_game_mode
         save_settings()
@@ -406,11 +424,20 @@ def add_game_specific_arg(game_arg: str):
 
 
 def remove_game_specific_arg(game_arg: str):
+    from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
+    from shoal.game_clients.nazi_zombies_portable import get_nzp_user_config_path
+    from shoal.game_clients.alterware import get_t7x_user_config_path
     game_args = get_game_specific_args()
     game_args.remove(game_arg)
     set_game_specific_args(game_args)
-    from shoal.game_clients import get_plutonium_modern_warfare_iii_config_path
-    remove_line_from_config(get_plutonium_modern_warfare_iii_config_path(), game_arg)
+    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011:
+        if get_currently_selected_game_mode() == data_structures.GameModes.MULTIPLAYER:
+            remove_line_from_config(get_plutonium_modern_warfare_iii_config_path(), game_arg)
+    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_BLACK_OPS_III:
+        remove_line_from_config(get_t7x_user_config_path(), game_arg)
+    if get_current_selected_game() == data_structures.Games.CALL_OF_DUTY_NAZI_ZOMBIES_PORTABLE:
+        remove_line_from_config(get_nzp_user_config_path(), game_arg)
+
 
 
 def get_title_for_app() -> str:
@@ -418,7 +445,7 @@ def get_title_for_app() -> str:
 
 
 def get_alterware_launcher_path() -> str:
-    from shoal.game_clients import get_latest_alterware_launcher_url
+    from shoal.game_clients.alterware import get_latest_alterware_launcher_url
     alterware_launcher_path = os.path.normpath(f'{SCRIPT_DIR}/assets/alterware_launcher/alterware-launcher.exe')
     os.makedirs(os.path.dirname(alterware_launcher_path), exist_ok=True)
     if not os.path.isfile(alterware_launcher_path):

@@ -9,7 +9,7 @@ from shoal.base_widgets.base_widgets import (
     BaseLabel,
 )
 from shoal.logger import print_to_log_window
-from shoal.game_clients import get_plutonium_modern_warfare_iii_config_path
+from shoal.game_clients.plutonium import get_plutonium_modern_warfare_iii_config_path
 from shoal.settings import (
     get_current_selected_game,
     get_global_args
@@ -64,7 +64,7 @@ class RemoveGlobalArgButton(Static):
 
 
         remove_global_arg(global_arg)
-        if get_current_selected_game().value == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III.value:
+        if get_current_selected_game().value == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_III_2011.value:
             remove_line_from_config(get_plutonium_modern_warfare_iii_config_path(), global_arg)
         app.global_args_section.refresh(recompose=True)
 

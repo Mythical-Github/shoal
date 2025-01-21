@@ -8,7 +8,7 @@ from shoal.base_widgets.base_widgets import (
     BaseLabel
 )
 from shoal.logger import print_to_log_window
-from shoal.game_clients import get_game_selector_options
+from shoal.game_clients.game_clients import get_game_selector_options
 
 from shoal.settings import (
     get_current_selected_game,
@@ -41,7 +41,6 @@ class GameSelector(Static):
             yield self.my_select
 
 
-
     @on(Select.Changed)
     def select_changed(self, event: Select.Changed) -> None:
         from shoal.main_app import app
@@ -51,7 +50,7 @@ class GameSelector(Static):
         app.game_dir_select.refresh(recompose=True)
         app.game_args_section.refresh(recompose=True)
         print_to_log_window(f'Loaded settings for "{get_current_selected_game().value}"')
-
+            
 
     def on_mount(self):
         self.my_select.styles.content_align = ("center", "middle")

@@ -55,7 +55,7 @@ class RemoveUserButton(Static):
 class UsernameBar(Static):
     def compose(self) -> ComposeResult:
         self.horizontal_box = BaseHorizontalBox(padding=(1, 0, 0, 0), width="100%")
-        self.user_label = BaseLabel(label_text="User:", label_height="auto")
+        self.user_label = BaseLabel(label_text="Username:", label_height="auto")
         self.options = []
         for index, username in enumerate(get_usernames()):
             self.options.append((username, index))
