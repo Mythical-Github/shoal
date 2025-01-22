@@ -63,3 +63,37 @@ def get_t7x_user_config_path() -> str:
 def get_alterware_github_link() -> str:
     # technically the launcher url and not the org, but this is what most people would want
     return 'https://github.com/mxve/alterware-launcher'
+
+
+def push_install_alterware_launcher_screen():
+    from shoal.main_app import app
+    from shoal.settings import SCRIPT_DIR, get_alterware_launcher_path
+    from shoal.base_widgets import setup_screen
+    from shoal import game_runner
+    if not os.path.isfile(os.path.normpath(f'{SCRIPT_DIR}/assets/alterware_launcher/alterware-launcher.exe')):
+        download_alterware_screen = setup_screen.SetupScreen(
+                step_text_to_step_functions={"Downloading Alterware Client...": get_alterware_launcher_path},
+                finished_all_steps_function=game_runner.run_game,
+                widgets_to_refresh_on_screen_pop=[],
+                screen_label_text="Alterware Client Setup:"
+            )
+        app.push_screen(download_alterware_screen)
+    else:
+        game_runner.run_game()
+
+
+def push_install_t7x_screen():
+    from shoal import game_runner
+    from shoal.main_app import app
+    from shoal.base_widgets import setup_screen
+    from shoal.game_clients.alterware import download_t7x_client, get_t7x_client_path
+    if not os.path.isfile(get_t7x_client_path()):
+        download_t7x_screen = setup_screen.SetupScreen(
+                step_text_to_step_functions={"Downloading T7X Client...": download_t7x_client},
+                finished_all_steps_function=game_runner.run_game,
+                widgets_to_refresh_on_screen_pop=[],
+                screen_label_text="Alterware T7X Client Setup:"
+            )
+        app.push_screen(download_t7x_screen)
+    else:
+        game_runner.run_game()

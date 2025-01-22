@@ -25,7 +25,7 @@ class GameClients(Enum):
     ALTERWARE = 'AlterWare'
     PLUTONIUM = 'Plutonium'
     AURORA = 'Aurora'
-    NAZI_ZOMBIES_PORTABLE = 'Nazi Zombies Portable'
+    NAZI_ZOMBIES_PORTABLE = 'Nazi Zombies: Portable'
 
 
 class SelectionFilter(Enum):

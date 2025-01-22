@@ -2,22 +2,16 @@
 
 
 To Do:
-    update the readme
 
 
 Later:
-    alterware mw2 more setup needed
-    have pluto download locally options
     test offline
     linux support, modern debian and ubuntu atleast
 
 
 Maybes:
     username and arg passing for aurora clients
-    make dir scanning more performant
-    config edit for all game args, also pass when possible through game launch for when configs don't already exist
     remove global args section doesn't really make much sense anymore
     add game specific launch args (two total config sections, game specific launch args like /max, and game client args like sv cheats)
     Automatically set font size to 8
-    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher    
-    dir scan option to find and populate game directories
+    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher

@@ -164,3 +164,4 @@ src/shoal/_version.py
 assets/base/shoal.exe
 /src/shoal/assets/alterware_launcher
 /src/shoal/assets/nazi_zombies_portable
+src/shoal/assets/plutonium_updater/plutonium-updater.exe

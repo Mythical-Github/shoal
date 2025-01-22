@@ -55,3 +55,19 @@ def get_iw7_mod_download_url() -> str:
 
 def get_iw7_mod_user_config_path() -> str:
     return
+
+
+def push_install_h1_screen():
+    from shoal.base_widgets import setup_screen
+    from shoal import game_runner
+    from shoal.main_app import app
+    if not os.path.isfile(get_h1_mod_exec_path()):
+        download_h1_mod_screen = setup_screen.SetupScreen(
+                step_text_to_step_functions={"Downloading Aurora's H1-Mod...": download_h1_mod},
+                finished_all_steps_function=game_runner.run_game,
+                widgets_to_refresh_on_screen_pop=[],
+                screen_label_text="Aurora's H1-Mod Setup:"
+            )
+        app.push_screen(download_h1_mod_screen)
+    else:
+        game_runner.run_game()

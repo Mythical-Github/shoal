@@ -81,3 +81,24 @@ def get_nazi_zombie_portable_executable_path():
 
 def get_nzp_user_config_path() -> str:
     return os.path.normpath(os.path.join(get_game_directory(), 'nzp', 'user_settings.cfg'))
+
+
+def push_install_nazi_zombies_portable_screen() -> str:
+    from shoal.base_widgets import setup_screen
+    from shoal.main_app import app
+    from shoal import game_runner
+    if not os.path.isfile(get_nazi_zombie_portable_executable_path()):
+        steps = {
+                    "Downloading Nazi Zombies: Portable...": installing_nzp_step_one,
+                    "Unzipping Nazi Zombies: Portable...": installing_nzp_step_two,
+                    "Cleaning up Nazi Zombies: Portable Installation...": installing_nzp_step_three,
+                }
+        download_nzp_screen = setup_screen.SetupScreen(
+                step_text_to_step_functions=steps,
+                finished_all_steps_function=game_runner.run_game,
+                widgets_to_refresh_on_screen_pop=[],
+                screen_label_text="Nazi Zombies: Portable Setup:"
+            )
+        app.push_screen(download_nzp_screen)
+    else:
+        game_runner.run_game()
