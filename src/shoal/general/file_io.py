@@ -55,6 +55,7 @@ def remove_lines_from_config_that_contain_substring(config_path: str, substring:
 
 
 def download_file(url: str, destination: str):
+    os.makedirs(os.path.dirname(destination), exist_ok=True)
     try:
         print(f"Downloading from {url} to {destination}...")
         

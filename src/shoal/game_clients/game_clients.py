@@ -100,3 +100,19 @@ def get_current_client_github_link() -> str:
     else:
         link = get_nazi_zombie_portable_github_link()
     return link
+
+
+def get_current_project_home_page() -> str:
+    link = None
+    current_client = get_current_client()
+    if current_client ==  data_structures.GameClients.PLUTONIUM:
+        link = 'https://plutonium.pw/'
+    elif current_client == data_structures.GameClients.ALTERWARE:
+        link = 'https://alterware.dev/'
+    elif current_client == data_structures.GameClients.AURORA:
+        link = 'https://auroramod.dev/'
+    elif current_client == data_structures.GameClients.NAZI_ZOMBIES_PORTABLE:
+        link = 'https://docs.nzp.gay/landing/'
+    else:
+        raise RuntimeError('No home page link for the current client found.')
+    return link

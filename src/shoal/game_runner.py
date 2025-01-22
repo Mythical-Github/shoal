@@ -11,7 +11,7 @@ from shoal.game_clients.plutonium import (
     get_plutonium_modern_warfare_iii_config_path
 )
 from shoal.game_clients.nazi_zombies_portable import get_nazi_zombie_portable_executable_path, get_nzp_user_config_path
-from shoal.game_clients.game_clients import get_current_client, get_current_client_docs_link
+from shoal.game_clients.game_clients import get_current_client, get_current_project_home_page
 from shoal.game_clients.alterware import get_t7x_client, get_t7x_user_config_path
 from shoal.settings import (
     get_current_selected_game,
@@ -199,7 +199,7 @@ def client_info_message():
     print_to_log_window(f'Game: "{get_current_selected_game().value}"')
     print_to_log_window(f'Game Mode: "{get_currently_selected_game_mode().value}"')
     print_to_log_window(f'Client/Project: "{get_current_client().value}"')
-    print_to_log_window(f'Client/Project Website: "{get_current_client_docs_link()}"')
+    print_to_log_window(f'Client/Project Website: "{get_current_project_home_page()}"')
 
 
 def run_mw_remastered_2017():
@@ -251,7 +251,6 @@ def run_game():
     game_directory = get_game_directory()
     current_client = get_current_client()
     current_game = get_current_selected_game()
-    # current_game_mode = get_currently_selected_game_mode()
     current_username = get_current_username()
     plutonium_appdata_dir = get_plutonium_appdata_dir()
     plutonium_bootstrapper = get_plutonium_bootstrapper()
