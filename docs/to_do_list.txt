@@ -2,16 +2,23 @@
 
 
 To Do:
+    user needs to login atleast once
+    , but do they need to launch a game each once, 
+    or does it look for a file, 
+    and does the game dir in their being set matter as well
+
+    use new online pluto mode
+    lan mode toggle option for atleast plutonium
+    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher
 
 
 Later:
     test offline
-    linux support, modern debian and ubuntu atleast
 
 
 Maybes:
+    linux support, modern debian and ubuntu atleast
     username and arg passing for aurora clients
     remove global args section doesn't really make much sense anymore
     add game specific launch args (two total config sections, game specific launch args like /max, and game client args like sv cheats)
     Automatically set font size to 8
-    non plutonium lan mode, needs a way to gen the token that gets passed to the launcher

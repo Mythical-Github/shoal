@@ -39,7 +39,7 @@ class ClientFilesButton(Static):
 
 
     def on_mount(self):
-        self.styles.width = "33%"
+        self.styles.width = "1fr"
 
 
 class GameDirectoryButton(Static):
@@ -52,7 +52,7 @@ class GameDirectoryButton(Static):
         open_directory_in_file_browser(game_dir)
 
     def on_mount(self):
-        self.styles.width = "33%"
+        self.styles.width = "1fr"
 
 
 def installation_check_then_run_game():
@@ -79,7 +79,7 @@ class RunGameButton(Static):
         installation_check_then_run_game()
 
     def on_mount(self):
-        self.styles.width = "33%"
+        self.styles.width = "1fr"
 
 
 class GameButtonsBar(Static):
