@@ -3,12 +3,12 @@
 #
 # - pywinctl
 # - requests
-# - textual
 # - textual-spinbox@ git+https://github.com/friscorose/textual-spinbox
+# - textual@ git+https://github.com/Textualize/textual@9986e51838b53f4b2ee380bd1d34893f64d3cae7
 # - tomlkit
 #
 
-certifi==2025.1.31
+certifi==2024.12.14
     # via requests
 charset-normalizer==3.4.1
     # via requests
@@ -44,7 +44,7 @@ requests==2.32.3
     # via hatch.envs.default
 rich==13.9.4
     # via textual
-textual==2.0.4
+textual @ git+https://github.com/Textualize/textual@9986e51838b53f4b2ee380bd1d34893f64d3cae7
     # via
     #   hatch.envs.default
     #   textual-spinbox
