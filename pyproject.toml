@@ -22,7 +22,7 @@ classifiers = [
   "Programming Language :: Python :: Implementation :: CPython",
 ]
 dependencies = [
-  "textual @ git+https://github.com/Textualize/textual@9986e51838b53f4b2ee380bd1d34893f64d3cae7",
+  "textual",
   "tomlkit",
   "textual-spinbox @ git+https://github.com/friscorose/textual-spinbox",
   "pywinctl",
