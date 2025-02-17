@@ -48,6 +48,7 @@ class SelectionScreen(Screen):
             yield self.picker
 
     def on_mount(self):
+        self.styles.border = ("solid", "grey")
         self.vertical_scroll.height = '100%'
 
 
