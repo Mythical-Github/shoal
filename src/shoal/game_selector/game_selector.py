@@ -53,6 +53,7 @@ class GameSelector(Static):
             
 
     def on_mount(self):
+        self.styles.height = '4'
         self.my_select.styles.content_align = ("center", "middle")
         self.my_select.styles.align = ("center", "middle")
         self.my_select.styles.height = "auto"

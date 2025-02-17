@@ -70,8 +70,7 @@ class CurrentDirectoryBar(Static):
     def on_mount(self):
         self.vertical.styles.height = 'auto'
         self.styles.height = 'auto'
-        self.styles.padding = (0)
-        # self.styles.margin = (0, 1, 0, 1)
+        self.styles.margin = (1, 0, 0, 0)
         self.text_area.styles.height = 'auto'
         self.text_area.styles.border = ("solid", "grey")
         self.text_area.border_title = "Current Selection"
