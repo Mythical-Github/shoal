@@ -10,9 +10,8 @@
             "type": "debugpy",
             "request": "launch",
             "module": "shoal",
-            "subProcess": true,
-            "console": "externalTerminal",
-            "args": []
+            "justMyCode": false,
+            "console": "externalTerminal"
         }
     ]
 }

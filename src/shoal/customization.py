@@ -2,7 +2,6 @@ import os
 import sys
 
 import pywinctl
-from textual.app import App
 
 
 def set_terminal_size(app: object, x: int, y: int):

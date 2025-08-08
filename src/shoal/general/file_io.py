@@ -23,7 +23,7 @@ def add_line_to_config(config_path: str, line: str):
 def remove_line_from_config(config_path: str, line: str):
     lines = get_all_lines_in_config(config_path)
     with open(config_path, 'w', encoding='utf-8') as file:
-        file.writelines(l for l in lines if l.rstrip('\n') != line)
+        file.writelines(line for line in lines if line.rstrip('\n') != line)
 
 
 def does_config_have_line(config_path: str, line: str) -> bool:
@@ -49,7 +49,7 @@ def remove_lines_from_config_that_end_with_substring(config_path: str, substring
 def remove_lines_from_config_that_contain_substring(config_path: str, substring: str):
     new_lines = []
     for line in get_all_lines_in_config(config_path):
-        if not line in (substring):
+        if line not in (substring):
             new_lines.append(line)
     set_all_lines_in_config(config_path, new_lines)
 

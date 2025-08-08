@@ -67,19 +67,19 @@ class GameAutoExecuteBar(Static):
         with self.horizontal_box:
             self.auto_execute_label = BaseLabel(
                 "Auto Run Game:",
-                label_content_align=("left", "middle"),
+                label_content_align=["left", "middle"],
                 label_width="auto"
             )
             self.auto_execute_checkbox = AutoRunGameCheckBox()
             self.auto_execute_delay_label = BaseLabel(
                 "Delay:",
-                label_content_align=("left", "middle"),
+                label_content_align=["left", "middle"],
                 label_width="auto"
             )
             self.auto_execute_delay_spin_box = SpinBox(iter_val=list(generate_spinbox_numbers()), init_val=get_auto_run_game_delay())
             self.staging_label = BaseLabel(
                 "Testing Branch:",
-                label_content_align=("left", "middle"),
+                label_content_align=["left", "middle"],
                 label_width="auto"
             )
             self.staging_checkbox = StagingCheckBox()

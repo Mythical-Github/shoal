@@ -19,7 +19,6 @@ from shoal.settings import (
     get_currently_selected_game_mode,
     get_game_directory,
     get_game_specific_args,
-    get_global_args,
     get_alterware_launcher_path,
     get_use_staging,
     get_global_args
@@ -195,7 +194,7 @@ def no_user_config_exists_check():
 
 
 def client_info_message():
-    print_to_log_window(f'Launch Information:')
+    print_to_log_window('Launch Information:')
     print_to_log_window(f'Game: "{get_current_selected_game().value}"')
     print_to_log_window(f'Game Mode: "{get_currently_selected_game_mode().value}"')
     print_to_log_window(f'Client/Project: "{get_current_client().value}"')
@@ -257,7 +256,7 @@ def run_game():
     game_launch_arg = get_game_launch_arg()
 
     if game_directory == '':
-        print_to_log_window(f'You must provide the game directory, before running the game')
+        print_to_log_window('You must provide the game directory, before running the game')
         return
     if current_game == data_structures.Games.CALL_OF_DUTY_MODERN_WARFARE_REMASTERED_2017:
         run_mw_remastered_2017()

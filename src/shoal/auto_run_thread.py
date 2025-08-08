@@ -58,7 +58,7 @@ def periodic_check():
         set_window_title(get_title_for_app())
         check_theme()
         spin_box = get_spinbox()
-        if spin_box != None:
+        if spin_box is not None:
             if float(spin_box.value) != get_auto_run_game_delay():
                 from shoal.logger import print_to_log_window
                 new_print_message = f'The Auto Run Game Delay has been set to "{spin_box.value}" Seconds'
@@ -66,7 +66,7 @@ def periodic_check():
                 if not last_print_message == new_print_message:
                     print_to_log_window(new_print_message)
                     last_print_message = new_print_message
-                set_auto_run_game_delay(spin_box.value)
+                set_auto_run_game_delay(float(spin_box.value))
 
         delay = get_auto_run_game_delay()
         if (time_passed - delay) > TOLERANCE:

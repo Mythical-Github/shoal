@@ -69,7 +69,7 @@ def install_plutonium_staging_branch():
         f'--directory "{get_plutonium_appdata_dir()}"',
         '--launcher',
         '--cdn-url',
-        f'"https://cdn.plutonium.pw/updater/staging/info.json"'
+        '"https://cdn.plutonium.pw/updater/staging/info.json"'
     ]
     for arg in args:
         command = f'{command} {arg}'
@@ -103,8 +103,8 @@ def download_plutonium_updater():
     plutonium_updater_zip = os.path.normpath(f'{os.path.dirname(plutonium_updater_path)}/plutonium_updater.zip')
     download_file(get_plutonium_updater_url(), plutonium_updater_zip)
     from shoal.logger import print_to_log_window
-    print_to_log_window(f'Plutonium Updater Repo Link: "https://github.com/mxve/plutonium-updater.rs"')
-    print_to_log_window(f'Plutonium Updater License: "https://github.com/mxve/plutonium-updater.rs/blob/master/LICENSE"')
+    print_to_log_window('Plutonium Updater Repo Link: "https://github.com/mxve/plutonium-updater.rs"')
+    print_to_log_window('Plutonium Updater License: "https://github.com/mxve/plutonium-updater.rs/blob/master/LICENSE"')
 
 
 def unzip_plutonium_updater():

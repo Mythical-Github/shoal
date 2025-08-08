@@ -450,7 +450,7 @@ def get_alterware_launcher_path() -> str:
     os.makedirs(os.path.dirname(alterware_launcher_path), exist_ok=True)
     if not os.path.isfile(alterware_launcher_path):
         from shoal.logger import print_to_log_window
-        print_to_log_window(f'Downloading the alterware launcher to the following location')
+        print_to_log_window('Downloading the alterware launcher to the following location')
         print_to_log_window(alterware_launcher_path)
         download_file(get_latest_alterware_launcher_url(), alterware_launcher_path)
         set_alterware_launcher_path(alterware_launcher_path)
