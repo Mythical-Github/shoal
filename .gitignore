@@ -197,3 +197,5 @@ cython_debug/
 /tests/temp
 /src/shoal/assets/nazi_zombies_portable
 /src/shoal/assets/plutonium_updater
+/src/shoal/assets/alterware_launcher
+src/shoal/settings.toml

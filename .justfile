@@ -22,9 +22,6 @@ default:
 
 setup: clean
   uv venv
-  uv run pre-commit install
-  uv run pre-commit install --hook-type commit-msg
-  uv run pre-commit install --hook-type pre-push
 
 build:
   uv run pyinstaller --noconfirm --onefile --console --name shoal src/shoal/__main__.py
@@ -47,9 +44,8 @@ commit:
 
 commit_retry:
   uv run cz commit --retry
-  
+
 refresh_deps:
-  uv run pre-commit autoupdate
   uv lock --upgrade
   uv sync
 

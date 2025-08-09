@@ -1,11 +1,7 @@
 from textual.app import ComposeResult
 from textual.widgets import Select, Static
 
-from shoal.base_widgets.base_widgets import (
-    BaseButton,
-    BaseHorizontalBox,
-    BaseLabel
-)
+from textual_base_widgets.base_widgets import BaseButton, BaseHorizontalBox, BaseLabel
 from shoal.logger import print_to_log_window
 from shoal.settings import get_current_username, get_usernames
 
@@ -16,8 +12,8 @@ class AddUserButton(Static):
         yield self.add_button
 
     def on_mount(self):
-        self.styles.width = 'auto'
-        self.styles.height = 'auto'
+        self.styles.width = "auto"
+        self.styles.height = "auto"
         self.add_button.styles.height = "auto"
         self.add_button.styles.text_align = "center"
         self.add_button.styles.align = ("center", "middle")
@@ -26,7 +22,10 @@ class AddUserButton(Static):
     def on_button_pressed(self) -> None:
         from shoal.main_app import app
         from shoal.usernames_bar import usernames_screen
-        app.push_screen(usernames_screen.UsernameScreen(widget_to_refresh=self.parent.parent))
+
+        app.push_screen(
+            usernames_screen.UsernameScreen(widget_to_refresh=self.parent.parent)
+        )
 
 
 class RemoveUserButton(Static):
@@ -35,8 +34,8 @@ class RemoveUserButton(Static):
         yield self.add_button
 
     def on_mount(self):
-        self.styles.width = 'auto'
-        self.styles.height = 'auto'
+        self.styles.width = "auto"
+        self.styles.height = "auto"
         self.add_button.styles.height = "auto"
         self.add_button.styles.text_align = "center"
         self.add_button.styles.align = ("center", "middle")
@@ -44,10 +43,13 @@ class RemoveUserButton(Static):
 
     def on_button_pressed(self) -> None:
         from shoal.settings import remove_username
+
         username_bar = self.parent.parent
         username = username_bar.options[username_bar.usernames_combo_box.value][0]
 
-        print_to_log_window(f'Attempting to remove the following username: "{username}"')
+        print_to_log_window(
+            f'Attempting to remove the following username: "{username}"'
+        )
         remove_username(username)
         username_bar.refresh(recompose=True)
 
@@ -68,10 +70,12 @@ class UsernameBar(Static):
                 main_value = entry[1]
                 break
             else:
-                error_message = 'The currently selected game is invalid.'
+                error_message = "The currently selected game is invalid."
                 RuntimeWarning(error_message)
 
-        self.usernames_combo_box: Select[int] = Select(options=self.options, allow_blank=False, value=main_value)
+        self.usernames_combo_box: Select[int] = Select(
+            options=self.options, allow_blank=False, value=main_value
+        )
         self.add_button = AddUserButton()
         self.remove_button = RemoveUserButton()
         with self.horizontal_box:
@@ -80,7 +84,6 @@ class UsernameBar(Static):
             yield self.remove_button
             yield self.add_button
         yield self.horizontal_box
-
 
     def on_mount(self):
         self.add_button.styles.height = "100%"

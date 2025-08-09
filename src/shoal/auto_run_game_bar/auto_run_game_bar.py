@@ -3,17 +3,14 @@ from textual_spinbox import SpinBox
 from textual.app import ComposeResult
 from textual.widgets import Checkbox, Static
 
-from shoal.base_widgets.base_widgets import (
-    BaseHorizontalBox,
-    BaseLabel
-)
+from textual_base_widgets.base_widgets import BaseHorizontalBox, BaseLabel
 from shoal.logger import print_to_log_window
 from shoal.settings import (
     set_auto_run_game,
     get_auto_run_game,
     get_auto_run_game_delay,
     get_use_staging,
-    set_use_staging
+    set_use_staging,
 )
 
 
@@ -31,7 +28,7 @@ class AutoRunGameCheckBox(Static):
         yield self.checkbox
 
     def on_mount(self):
-        self.styles.width = 'auto'
+        self.styles.width = "auto"
 
     @on(Checkbox.Changed)
     def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
@@ -46,8 +43,7 @@ class StagingCheckBox(Static):
         yield self.checkbox
 
     def on_mount(self):
-        self.styles.width = 'auto'
-
+        self.styles.width = "auto"
 
     @on(Checkbox.Changed)
     def on_checkbox_changed(self, event: Checkbox.Changed) -> None:
@@ -55,7 +51,10 @@ class StagingCheckBox(Static):
         check_box_changed_message = f'Use Testing Branch changed to "{event.value}"'
         print_to_log_window(check_box_changed_message)
 
+
 delay_spinbox = None
+
+
 def get_spinbox():
     global delay_spinbox
     return delay_spinbox
@@ -68,19 +67,20 @@ class GameAutoExecuteBar(Static):
             self.auto_execute_label = BaseLabel(
                 "Auto Run Game:",
                 label_content_align=["left", "middle"],
-                label_width="auto"
+                label_width="auto",
             )
             self.auto_execute_checkbox = AutoRunGameCheckBox()
             self.auto_execute_delay_label = BaseLabel(
-                "Delay:",
-                label_content_align=["left", "middle"],
-                label_width="auto"
+                "Delay:", label_content_align=["left", "middle"], label_width="auto"
             )
-            self.auto_execute_delay_spin_box = SpinBox(iter_val=list(generate_spinbox_numbers()), init_val=get_auto_run_game_delay())
+            self.auto_execute_delay_spin_box = SpinBox(
+                iter_val=list(generate_spinbox_numbers()),
+                init_val=get_auto_run_game_delay(),
+            )
             self.staging_label = BaseLabel(
                 "Testing Branch:",
                 label_content_align=["left", "middle"],
-                label_width="auto"
+                label_width="auto",
             )
             self.staging_checkbox = StagingCheckBox()
             yield self.staging_label
@@ -92,8 +92,8 @@ class GameAutoExecuteBar(Static):
 
     def on_mount(self):
         self.auto_execute_delay_spin_box.styles.width = "1fr"
-        self.auto_execute_checkbox.styles.width = 'auto'
+        self.auto_execute_checkbox.styles.width = "auto"
         self.auto_execute_checkbox.styles.content_align = ("center", "middle")
-        self.staging_checkbox.styles.width = 'auto'
+        self.staging_checkbox.styles.width = "auto"
         global delay_spinbox
         delay_spinbox = self.auto_execute_delay_spin_box

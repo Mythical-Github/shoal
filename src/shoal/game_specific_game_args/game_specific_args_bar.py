@@ -1,7 +1,7 @@
 from textual.app import ComposeResult
 from textual.widgets import Select, Static
 
-from shoal.base_widgets.base_widgets import (
+from textual_base_widgets.base_widgets import (
     BaseButton,
     BaseHorizontalBox,
     BaseLabel,
@@ -16,12 +16,15 @@ class AddGameArgButton(Static):
         yield self.add_game_arg_button
 
     def on_mount(self):
-        self.styles.width = 'auto'
+        self.styles.width = "auto"
 
     def on_button_pressed(self) -> None:
         from shoal.main_app import app
         from shoal.game_specific_game_args import game_args_screen
-        app.push_screen(game_args_screen.GameArgsScreen(widget_to_refresh=self.parent.parent))
+
+        app.push_screen(
+            game_args_screen.GameArgsScreen(widget_to_refresh=self.parent.parent)
+        )
 
 
 class RemoveGameArgButton(Static):
@@ -30,8 +33,8 @@ class RemoveGameArgButton(Static):
         yield self.remove_button
 
     def on_mount(self):
-        self.styles.width = 'auto'
-        self.styles.height = 'auto'
+        self.styles.width = "auto"
+        self.styles.height = "auto"
         self.remove_button.styles.height = "auto"
         self.remove_button.styles.text_align = "center"
         self.remove_button.styles.align = ("center", "middle")
@@ -44,12 +47,14 @@ class RemoveGameArgButton(Static):
         options = app.game_args_section.options
 
         if not len(options) > 0:
-            print_to_log_window('You cannot remove a non-existent argument')
+            print_to_log_window("You cannot remove a non-existent argument")
             return
 
         game_arg = options[app.game_args_section.combo_box.value][0]
 
-        print_to_log_window(f'Attempting to remove the following game specific argument: "{game_arg}"')
+        print_to_log_window(
+            f'Attempting to remove the following game specific argument: "{game_arg}"'
+        )
         remove_game_specific_arg(game_arg)
         app.game_args_section.refresh(recompose=True)
 
@@ -67,9 +72,13 @@ class GameSpecificArgsSection(Static):
         for arg_index, arg in enumerate(get_game_specific_args()):
             self.options.append((arg, arg_index))
 
-        self.combo_box: Select[int] = Select(self.options, allow_blank=allow_game_args_blank(), prompt='None')
+        self.combo_box: Select[int] = Select(
+            self.options, allow_blank=allow_game_args_blank(), prompt="None"
+        )
 
-        self.game_args_label = BaseLabel(label_text="Game Specific Args:", label_height="auto")
+        self.game_args_label = BaseLabel(
+            label_text="Game Specific Args:", label_height="auto"
+        )
 
         self.add_button = AddGameArgButton()
 
