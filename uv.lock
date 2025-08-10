@@ -3235,7 +3235,7 @@ requires-dist = [
     { name = "textual-base-widgets", git = "https://github.com/Mythical-Github/textual-base-widgets" },
     { name = "textual-file-system-selector", git = "https://github.com/Mythical-Github/textual-file-system-selector" },
     { name = "textual-setup-screen", git = "https://github.com/Mythical-Github/textual-setup-screen" },
-    { name = "textual-spinbox", git = "https://github.com/friscorose/textual-spinbox" },
+    { name = "textual-spinbox", specifier = ">=0.8.2" },
     { name = "textual-text-input-screen", git = "https://github.com/Mythical-Github/textual-text-input-screen" },
     { name = "tomlkit", specifier = ">=0.13.3" },
 ]
@@ -3308,10 +3308,14 @@ dependencies = [
 
 [[package]]
 name = "textual-spinbox"
-version = "0.8.1"
-source = { git = "https://github.com/friscorose/textual-spinbox#df1faeeb976faf855797b20e313c9cf8ddd14c78" }
+version = "0.8.2"
+source = { registry = "https://pypi.org/simple" }
 dependencies = [
     { name = "textual" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/d5/d2/ac34a02e31b12586094f819eed64ff9911982ef8a63739004a5ff914ea70/textual_spinbox-0.8.2.tar.gz", hash = "sha256:4cc128cb856d01482eb3f57962d7ec1a3d5d139b841ab684f1ac4f408c69224a", size = 3728, upload-time = "2025-08-10T21:16:37.199Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/92/9e/57a44cca63ad0eb6f7674ae2b6b2d043f7e77c266b372483c5cf60aae40a/textual_spinbox-0.8.2-py3-none-any.whl", hash = "sha256:a690c96a5985dd19d5485e5974501de7bbda1c671cb2ab6aace152d1ac47ebbf", size = 5608, upload-time = "2025-08-10T21:16:36.406Z" },
 ]
 
 [[package]]

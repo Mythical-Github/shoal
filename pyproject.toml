@@ -11,13 +11,12 @@ dependencies = [
     "textual-base-widgets",
     "textual-file-system-selector",
     "textual-setup-screen",
-    "textual-spinbox",
+    "textual-spinbox>=0.8.2",
     "textual-text-input-screen",
     "tomlkit>=0.13.3",
 ]
 
 [tool.uv.sources]
-textual-spinbox = { git = "https://github.com/friscorose/textual-spinbox" }
 textual-setup-screen = { git = "https://github.com/Mythical-Github/textual-setup-screen" }
 textual-text-input-screen = { git = "https://github.com/Mythical-Github/textual-text-input-screen" }
 textual-base-widgets = { git = "https://github.com/Mythical-Github/textual-base-widgets" }
